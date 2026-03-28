@@ -58,7 +58,7 @@ export default function AboutPage() {
             <span className="inline-block font-display font-semibold text-xs uppercase tracking-[0.2em] text-gold mb-4">
               Наша история
             </span>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-navy leading-tight mb-6">
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-white leading-tight mb-6">
               От идеи до лидерства на рынке
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -82,11 +82,11 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 0.1}>
-                <div className="bg-background rounded-xl p-8 h-full text-center hover-lift">
-                  <div className="w-14 h-14 rounded-xl bg-navy/5 flex items-center justify-center mx-auto mb-5">
+                <div className="bg-card rounded-xl p-8 h-full text-center hover-lift">
+                  <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mx-auto mb-5">
                     <v.icon className="w-7 h-7 text-gold" />
                   </div>
-                  <h3 className="font-display font-bold text-lg text-navy mb-2">{v.title}</h3>
+                  <h3 className="font-display font-bold text-lg text-white mb-2">{v.title}</h3>
                   <p className="text-muted-foreground text-sm">{v.desc}</p>
                 </div>
               </AnimatedSection>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                     i % 2 === 0 ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
                   }`}>
                     <span className="font-display font-extrabold text-2xl text-gradient-gold">{item.year}</span>
-                    <h3 className="font-display font-bold text-lg text-navy mt-1 mb-2">{item.title}</h3>
+                    <h3 className="font-display font-bold text-lg text-white mt-1 mb-2">{item.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </div>

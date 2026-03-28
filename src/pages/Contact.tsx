@@ -45,8 +45,8 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Form */}
             <AnimatedSection className="lg:col-span-3">
-              <div className="bg-ice rounded-2xl p-8 md:p-10">
-                <h2 className="font-display font-bold text-2xl text-navy mb-2">
+              <div className="bg-card rounded-2xl p-8 md:p-10">
+                <h2 className="font-display font-bold text-2xl text-white mb-2">
                   Заказать уборку
                 </h2>
                 <p className="text-muted-foreground text-sm mb-8">
@@ -87,12 +87,15 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
                     >
                       <option value="">Выберите услугу</option>
-                      <option>Поддерживающая уборка</option>
+                      <option>Уборка квартир</option>
+                      <option>Уборка офисов</option>
                       <option>Генеральная уборка</option>
                       <option>Уборка после ремонта</option>
-                      <option>Уборка офиса</option>
                       <option>Химчистка мебели</option>
-                      <option>Мытьё окон</option>
+                      <option>Мойка окон</option>
+                      <option>Мытьё фасадов</option>
+                      <option>Чистка брусчатки</option>
+                      <option>Дезинфекция</option>
                     </select>
                   </div>
 
@@ -122,21 +125,21 @@ export default function ContactPage() {
             <AnimatedSection className="lg:col-span-2" delay={0.1}>
               <div className="space-y-8">
                 <div>
-                  <h3 className="font-display font-bold text-xl text-navy mb-6">Контактная информация</h3>
+                  <h3 className="font-display font-bold text-xl text-white mb-6">Контактная информация</h3>
                   <div className="space-y-6">
                     {contactInfo.map((c) => (
                       <div key={c.label} className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-ice flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-lg bg-card flex items-center justify-center shrink-0">
                           <c.icon className="w-5 h-5 text-gold" />
                         </div>
                         <div>
                           <div className="text-xs text-muted-foreground mb-0.5">{c.label}</div>
                           {c.href ? (
-                            <a href={c.href} className="text-sm font-medium text-navy hover:text-gold transition-colors">
+                            <a href={c.href} className="text-sm font-medium text-white hover:text-gold transition-colors">
                               {c.value}
                             </a>
                           ) : (
-                            <span className="text-sm font-medium text-navy">{c.value}</span>
+                            <span className="text-sm font-medium text-white">{c.value}</span>
                           )}
                         </div>
                       </div>
@@ -145,7 +148,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Map placeholder */}
-                <div className="rounded-xl overflow-hidden bg-ice h-[240px] flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden bg-card h-[240px] flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-8 h-8 text-gold mx-auto mb-2" />
                     <p className="text-sm text-muted-foreground">Ташкент, Узбекистан</p>

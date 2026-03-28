@@ -95,7 +95,7 @@ export default function ReviewsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((review, i) => (
               <AnimatedSection key={review.name} delay={i * 0.05}>
-                <div className="bg-ice rounded-xl p-7 h-full flex flex-col hover-lift">
+                <div className="bg-card rounded-xl p-7 h-full flex flex-col hover-lift">
                   <Quote className="w-8 h-8 text-gold/30 mb-4" />
 
                   <p className="text-foreground text-sm leading-relaxed flex-1 mb-6">
@@ -109,7 +109,7 @@ export default function ReviewsPage() {
                   </div>
 
                   <div className="border-t border-border pt-4">
-                    <div className="font-display font-semibold text-sm text-navy">{review.name}</div>
+                    <div className="font-display font-semibold text-sm text-white">{review.name}</div>
                     <div className="text-xs text-muted-foreground mt-0.5">
                       {review.role} · {review.date}
                     </div>

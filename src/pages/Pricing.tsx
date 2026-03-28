@@ -79,20 +79,20 @@ export default function PricingPage() {
         <div className="container-wide">
           {pricingData.map((table, ti) => (
             <AnimatedSection key={table.header} className={ti > 0 ? "mt-16" : ""}>
-              <h3 className="font-display font-bold text-2xl text-navy mb-6">{table.header}</h3>
+              <h3 className="font-display font-bold text-2xl text-white mb-6">{table.header}</h3>
               <div className="overflow-x-auto rounded-xl border border-border">
                 <table className="w-full min-w-[600px]">
                   <thead>
-                    <tr className="bg-ice">
-                      <th className="text-left px-6 py-4 font-display font-semibold text-sm text-navy">Услуга</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-navy">Поддерживающая</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-navy">Генеральная</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-navy">После ремонта</th>
+                    <tr className="bg-card">
+                      <th className="text-left px-6 py-4 font-display font-semibold text-sm text-white">Услуга</th>
+                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">Поддерживающая</th>
+                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">Генеральная</th>
+                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">После ремонта</th>
                     </tr>
                   </thead>
                   <tbody>
                     {table.items.map((row, i) => (
-                      <tr key={row.service} className={`border-t border-border ${i % 2 === 0 ? "bg-background" : "bg-ice/50"}`}>
+                      <tr key={row.service} className={`border-t border-border ${i % 2 === 0 ? "bg-background" : "bg-card/50"}`}>
                         <td className="px-6 py-4 font-medium text-sm text-foreground">{row.service}</td>
                         <td className="px-6 py-4 text-center text-sm text-foreground">{row.support}</td>
                         <td className="px-6 py-4 text-center text-sm text-foreground">{row.general}</td>
@@ -109,7 +109,7 @@ export default function PricingPage() {
           {/* What's included */}
           <AnimatedSection className="mt-16">
             <div className="bg-ice rounded-2xl p-8 md:p-12">
-              <h3 className="font-display font-bold text-2xl text-navy mb-6">Что включено в стоимость</h3>
+              <h3 className="font-display font-bold text-2xl text-white mb-6">Что включено в стоимость</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {includes.map((item) => (
                   <div key={item} className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function PricingPage() {
             {faq.map((item) => (
               <AnimatedSection key={item.q}>
                 <details className="group bg-background rounded-xl">
-                  <summary className="flex items-center justify-between cursor-pointer p-6 font-display font-semibold text-navy">
+                  <summary className="flex items-center justify-between cursor-pointer p-6 font-display font-semibold text-white">
                     {item.q}
                     <HelpCircle className="w-5 h-5 text-gold shrink-0 ml-4 group-open:rotate-180 transition-transform" />
                   </summary>

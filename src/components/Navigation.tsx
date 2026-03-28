@@ -36,10 +36,10 @@ export default function Navigation() {
       <div className="container-wide flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-navy-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-sm">GC</span>
+          <div className="w-9 h-9 rounded-lg bg-gold/20 flex items-center justify-center">
+            <span className="text-gold font-display font-bold text-sm">GC</span>
           </div>
-          <span className="font-display font-bold text-lg text-navy">
+          <span className="font-display font-bold text-lg text-white">
             Grand<span className="text-gold">Clean</span>
           </span>
         </Link>
@@ -52,8 +52,8 @@ export default function Navigation() {
               to={item.path}
               className={`text-sm font-medium transition-colors duration-200 relative group ${
                 location.pathname === item.path
-                  ? "text-navy"
-                  : "text-muted-foreground hover:text-navy"
+                  ? "text-gold"
+                  : "text-muted-foreground hover:text-white"
               }`}
             >
               {item.label}
@@ -68,13 +68,13 @@ export default function Navigation() {
 
         {/* CTA + Phone */}
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+998901234567" className="flex items-center gap-2 text-sm font-medium text-navy">
+          <a href="tel:+998901234567" className="flex items-center gap-2 text-sm font-medium text-white">
             <Phone className="w-4 h-4 text-gold" />
             +998 90 123 45 67
           </a>
           <Link
             to="/contact"
-            className="px-5 py-2.5 rounded-lg font-display font-semibold text-sm text-primary-foreground bg-navy hover:bg-navy-light transition-colors duration-200"
+            className="px-5 py-2.5 rounded-lg font-display font-semibold text-sm text-accent-foreground bg-gold hover:bg-gold-light transition-colors duration-200"
           >
             Заказать уборку
           </Link>
@@ -83,7 +83,7 @@ export default function Navigation() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-navy"
+          className="lg:hidden p-2 text-white"
           aria-label="Меню"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,7 +106,7 @@ export default function Navigation() {
                   to={item.path}
                   className={`text-base font-medium py-2 ${
                     location.pathname === item.path
-                      ? "text-navy"
+                      ? "text-gold"
                       : "text-muted-foreground"
                   }`}
                 >
@@ -114,13 +114,13 @@ export default function Navigation() {
                 </Link>
               ))}
               <div className="pt-4 border-t border-border flex flex-col gap-3">
-                <a href="tel:+998901234567" className="flex items-center gap-2 text-sm font-medium text-navy">
+                <a href="tel:+998901234567" className="flex items-center gap-2 text-sm font-medium text-white">
                   <Phone className="w-4 h-4 text-gold" />
                   +998 90 123 45 67
                 </a>
                 <Link
                   to="/contact"
-                  className="px-5 py-3 rounded-lg font-display font-semibold text-sm text-primary-foreground bg-navy text-center"
+                  className="px-5 py-3 rounded-lg font-display font-semibold text-sm text-accent-foreground bg-gold text-center"
                 >
                   Заказать уборку
                 </Link>

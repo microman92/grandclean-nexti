@@ -32,8 +32,28 @@ const services = [
   },
   {
     title: "Химчистка мебели",
-    desc: "Профессиональная химчистка диванов, кресел, матрасов и ковров. Возвращаем первозданный вид.",
+    desc: "Глубокая химчистка диванов, кресел, матрасов и ковров. Удаление пятен, запахов и аллергенов.",
     img: officeImg,
+  },
+  {
+    title: "Мойка окон",
+    desc: "Профессиональное мытьё окон на любой высоте. Чистка рам, подоконников и стеклопакетов без разводов.",
+    img: heroImg,
+  },
+  {
+    title: "Мытьё фасадов",
+    desc: "Очистка фасадов зданий от загрязнений, пыли и копоти. Работаем на любой высоте с промышленным оборудованием.",
+    img: officeImg,
+  },
+  {
+    title: "Чистка брусчатки",
+    desc: "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки. Возвращаем первоначальный вид покрытию.",
+    img: heroImg,
+  },
+  {
+    title: "Дезинфекция",
+    desc: "Профессиональная дезинфекция помещений. Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей и животных.",
+    img: apartmentImg,
   },
 ];
 
@@ -147,20 +167,9 @@ export default function HomePage() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-elevated">
               <img src={heroImg} alt="Чистый интерьер" className="w-full h-[520px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
-            {/* Floating widget */}
-            <div className="absolute -bottom-6 -left-6 bg-background rounded-xl p-5 shadow-elevated">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-gold" />
-                </div>
-                <div>
-                  <div className="font-display font-bold text-sm text-navy">Бесплатный выезд</div>
-                  <div className="text-xs text-muted-foreground">Оценка за 30 минут</div>
-                </div>
-              </div>
-            </div>
+
           </motion.div>
         </div>
       </section>
@@ -184,14 +193,14 @@ export default function HomePage() {
                   onMouseEnter={() => setActiveService(i)}
                   className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${
                     activeService === i
-                      ? "bg-navy shadow-elevated"
-                      : "hover:bg-ice"
+                      ? "bg-white/10 shadow-elevated"
+                      : "hover:bg-white/5"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span
                       className={`font-display font-semibold text-base ${
-                        activeService === i ? "text-primary-foreground" : "text-navy"
+                        activeService === i ? "text-white" : "text-foreground"
                       }`}
                     >
                       {s.title}
@@ -208,7 +217,7 @@ export default function HomePage() {
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
-                      className="text-primary-foreground/70 text-sm mt-2 leading-relaxed"
+                      className="text-muted-foreground text-sm mt-2 leading-relaxed"
                     >
                       {s.desc}
                     </motion.p>
@@ -231,12 +240,12 @@ export default function HomePage() {
                   alt={services[activeService].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="font-display font-bold text-2xl text-primary-foreground mb-2">
+                  <h3 className="font-display font-bold text-2xl text-white mb-2">
                     {services[activeService].title}
                   </h3>
-                  <p className="text-primary-foreground/80 text-sm">{services[activeService].desc}</p>
+                  <p className="text-white/80 text-sm">{services[activeService].desc}</p>
                 </div>
               </motion.div>
             </div>
@@ -245,7 +254,7 @@ export default function HomePage() {
           <AnimatedSection className="mt-12 text-center">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 font-display font-semibold text-sm text-navy hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 font-display font-semibold text-sm text-foreground hover:text-gold transition-colors"
             >
               Все услуги
               <ArrowRight className="w-4 h-4" />
@@ -266,11 +275,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {advantages.map((a, i) => (
               <AnimatedSection key={a.title} delay={i * 0.1}>
-                <div className="group bg-background rounded-xl p-8 hover-lift cursor-default h-full">
-                  <div className="w-12 h-12 rounded-xl bg-navy/5 group-hover:bg-gold/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <a.icon className="w-6 h-6 text-navy group-hover:text-gold transition-colors duration-300" />
+                <div className="group bg-card rounded-xl p-8 hover-lift cursor-default h-full">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-gold/10 flex items-center justify-center mb-6 transition-colors duration-300">
+                    <a.icon className="w-6 h-6 text-gold/70 group-hover:text-gold transition-colors duration-300" />
                   </div>
-                  <h3 className="font-display font-bold text-lg text-navy mb-2">{a.title}</h3>
+                  <h3 className="font-display font-bold text-lg text-white mb-2">{a.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{a.desc}</p>
                 </div>
               </AnimatedSection>
@@ -295,10 +304,10 @@ export default function HomePage() {
             {steps.map((step, i) => (
               <AnimatedSection key={step.num} delay={i * 0.15}>
                 <div className="text-center relative">
-                  <div className="w-24 h-24 rounded-full bg-ice flex items-center justify-center mx-auto mb-6 relative z-10">
+                  <div className="w-24 h-24 rounded-full bg-card flex items-center justify-center mx-auto mb-6 relative z-10">
                     <span className="font-display font-extrabold text-2xl text-gradient-gold">{step.num}</span>
                   </div>
-                  <h3 className="font-display font-bold text-base text-navy mb-2">{step.title}</h3>
+                  <h3 className="font-display font-bold text-base text-white mb-2">{step.title}</h3>
                   <p className="text-muted-foreground text-sm">{step.desc}</p>
                 </div>
               </AnimatedSection>
