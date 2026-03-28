@@ -1,7 +1,7 @@
 import { Star, Quote } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import SectionHeading from "@/components/SectionHeading";
+
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -51,7 +51,7 @@ const reviews = [
 ];
 
 const stats = [
-  { value: "10 000+", label: "Довольных клиентов" },
+  { value: "1 000+", label: "Довольных клиентов" },
   { value: "4.9", label: "Средняя оценка" },
   { value: "99%", label: "Рекомендуют нас" },
   { value: "50+", label: "Корпоративных клиентов" },

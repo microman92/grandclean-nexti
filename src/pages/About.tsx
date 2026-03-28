@@ -11,7 +11,7 @@ const timeline = [
   { year: "2017", title: "1 000 клиентов", desc: "Расширили команду до 30 специалистов. Запустили услуги для бизнеса." },
   { year: "2019", title: "Новые технологии", desc: "Инвестировали в профессиональное оборудование европейского уровня." },
   { year: "2021", title: "Лидер рынка", desc: "Стали одной из крупнейших клининговых компаний в Узбекистане." },
-  { year: "2024", title: "10 000+ клиентов", desc: "Обслуживаем дома, офисы и коммерческие объекты по всему Ташкенту." },
+  { year: "2024", title: "1 000+ клиентов", desc: "Обслуживаем дома, офисы и коммерческие объекты по всему Ташкенту." },
 ];
 
 const values = [
@@ -62,7 +62,7 @@ export default function AboutPage() {
               От идеи до лидерства на рынке
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              GrandClean была основана в 2015 году с простой миссией — сделать профессиональный клининг доступным каждому жителю Ташкента. 
+              GrandClean была основана в 2015 году с простой миссией — сделать профессиональный клининг доступным каждому жителю Ташкента.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Сегодня мы — команда из более чем 80 проверенных специалистов, оснащённых современным оборудованием и экологичными средствами. Мы обслуживаем тысячи клиентов и постоянно совершенствуем качество наших услуг.
@@ -106,16 +106,14 @@ export default function AboutPage() {
 
             {timeline.map((item, i) => (
               <AnimatedSection key={item.year} delay={i * 0.1}>
-                <div className={`relative flex items-start gap-8 mb-12 last:mb-0 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}>
+                <div className={`relative flex items-start gap-8 mb-12 last:mb-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}>
                   {/* Dot */}
                   <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-gold -translate-x-1.5 mt-2 z-10 ring-4 ring-background" />
 
                   {/* Content */}
-                  <div className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${
-                    i % 2 === 0 ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
-                  }`}>
+                  <div className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
+                    }`}>
                     <span className="font-display font-extrabold text-2xl text-gradient-gold">{item.year}</span>
                     <h3 className="font-display font-bold text-lg text-white mt-1 mb-2">{item.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>

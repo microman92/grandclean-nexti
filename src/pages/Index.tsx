@@ -60,7 +60,7 @@ const services = [
 const advantages = [
   { icon: Shield, title: "Гарантия качества", desc: "Если результат не устроит — переделаем бесплатно" },
   { icon: Clock, title: "Точно в срок", desc: "Приезжаем в оговорённое время без задержек" },
-  { icon: Star, title: "5+ лет опыта", desc: "Более 10 000 довольных клиентов в Ташкенте" },
+  { icon: Star, title: "5+ лет опыта", desc: "Более 1 000 довольных клиентов в Ташкенте" },
   { icon: Users, title: "Проверенная команда", desc: "Все сотрудники проходят тщательную проверку" },
 ];
 
@@ -114,7 +114,7 @@ export default function HomePage() {
               transition={{ delay: 0.4 }}
               className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-lg mb-10"
             >
-              Профессиональная уборка квартир, домов и офисов. Доверьте чистоту экспертам — мы заботимся о каждой детали.
+              Профессиональная химчистка мебели, стирка ковров и уборка квартир в Ташкенте. Используем оборудование Karcher и безопасные эко-средства.
             </motion.p>
 
             <motion.div
@@ -146,7 +146,7 @@ export default function HomePage() {
               className="mt-12 flex gap-8 md:gap-12"
             >
               {[
-                { val: "10 000+", label: "Довольных клиентов" },
+                { val: "1000+", label: "Довольных клиентов" },
                 { val: "5+", label: "Лет на рынке" },
                 { val: "99%", label: "Рекомендуют нас" },
               ].map((s) => (
@@ -191,26 +191,23 @@ export default function HomePage() {
                   key={s.title}
                   onClick={() => setActiveService(i)}
                   onMouseEnter={() => setActiveService(i)}
-                  className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${
-                    activeService === i
-                      ? "bg-white/10 shadow-elevated"
-                      : "hover:bg-white/5"
-                  }`}
+                  className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${activeService === i
+                    ? "bg-white/10 shadow-elevated"
+                    : "hover:bg-white/5"
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <span
-                      className={`font-display font-semibold text-base ${
-                        activeService === i ? "text-white" : "text-foreground"
-                      }`}
+                      className={`font-display font-semibold text-base ${activeService === i ? "text-white" : "text-foreground"
+                        }`}
                     >
                       {s.title}
                     </span>
                     <ArrowRight
-                      className={`w-4 h-4 transition-all duration-300 ${
-                        activeService === i
-                          ? "text-gold translate-x-0 opacity-100"
-                          : "text-muted-foreground -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
-                      }`}
+                      className={`w-4 h-4 transition-all duration-300 ${activeService === i
+                        ? "text-gold translate-x-0 opacity-100"
+                        : "text-muted-foreground -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                        }`}
                     />
                   </div>
                   {activeService === i && (
