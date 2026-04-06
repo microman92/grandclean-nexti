@@ -30,14 +30,17 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
               <div className="w-9 h-9 rounded-lg bg-gold/20 flex items-center justify-center">
-                <span className="font-display font-bold text-sm text-gold">GC</span>
+                <span className="font-display font-bold text-sm text-gold">
+                  GC
+                </span>
               </div>
               <span className="font-display font-bold text-lg">
                 Grand<span className="text-gold">Clean</span>
               </span>
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed mb-6">
-              Профессиональный клининг в Ташкенте. Безупречная чистота вашего пространства с 2015 года.
+              Профессиональный клининг в Ташкенте. Безупречная чистота вашего
+              пространства с 2015 года.
             </p>
           </div>
 
@@ -84,24 +87,34 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <div>
-                  <a href="tel:+998901234567" className="text-sm hover:text-gold transition-colors">
+                  <a
+                    href="tel:+998901234567"
+                    className="text-sm hover:text-gold transition-colors"
+                  >
                     +998 90 123 45 67
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <a href="mailto:info@grandclean.uz" className="text-sm hover:text-gold transition-colors">
+                <a
+                  href="mailto:info@grandclean.uz"
+                  className="text-sm hover:text-gold transition-colors"
+                >
                   info@grandclean.uz
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-sm text-primary-foreground/60">Ташкент, Узбекистан</span>
+                <span className="text-sm text-primary-foreground/60">
+                  Ташкент, Узбекистан
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-sm text-primary-foreground/60">Пн-Вс: 08:00 — 22:00</span>
+                <span className="text-sm text-primary-foreground/60">
+                  Пн-Вс: 08:00 — 22:00
+                </span>
               </li>
             </ul>
           </div>

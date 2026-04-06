@@ -1,74 +1,137 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Clock, Star, Sparkles, Users, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Shield,
+  Clock,
+  Star,
+  Sparkles,
+  Users,
+  CheckCircle2,
+  Award,
+  Percent,
+  ThumbsUp,
+} from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
-import heroImg from "@/assets/hero-interior.jpg";
-import officeImg from "@/assets/office-clean.jpg";
-import apartmentImg from "@/assets/apartment-clean.jpg";
+import PricingGrid from "@/components/PricingGrid";
+import Promotions from "@/components/Promotions";
+import BeforeAfter from "@/components/BeforeAfter";
+import FAQ from "@/components/FAQ";
+import Geography from "@/components/Geography";
+import {
+  heroImg,
+  serviceApartment,
+  serviceCarpet,
+  serviceSofa,
+  serviceWindow,
+  serviceFacade,
+  servicePaving,
+  serviceDisinfection,
+} from "@/assets";
 import { useState } from "react";
 
 const services = [
   {
-    title: "Уборка квартир",
-    desc: "Регулярная и разовая уборка жилых помещений любой площади с использованием профессиональных средств.",
-    img: apartmentImg,
+    title: "Профессиональная уборка",
+    desc: "Регулярная и разовая уборка жилых и коммерческих помещений.",
+    img: serviceApartment,
+    price: "от 25.000 за 1 Кв М",
   },
   {
-    title: "Уборка офисов",
-    desc: "Поддержание безупречной чистоты в офисных пространствах. Работаем в удобное для вас время.",
-    img: officeImg,
-  },
-  {
-    title: "Генеральная уборка",
-    desc: "Глубокая очистка каждого уголка помещения. Идеально для сезонной уборки или перед важными событиями.",
-    img: heroImg,
-  },
-  {
-    title: "Уборка после ремонта",
-    desc: "Удаление строительной пыли, остатков клея, цемента. Полная подготовка помещения к заселению.",
-    img: apartmentImg,
+    title: "Стирка ковров",
+    desc: "Профессиональная стирка ковров с вывозом и доставкой.",
+    img: serviceCarpet,
+    price: "от 15.000 сум",
   },
   {
     title: "Химчистка мебели",
-    desc: "Глубокая химчистка диванов, кресел, матрасов и ковров. Удаление пятен, запахов и аллергенов.",
-    img: officeImg,
+    desc: "Глубокая химчистка диванов, кресел, матрасов и ковров.",
+    img: serviceSofa,
+    price: "от 50.000 сум",
   },
   {
     title: "Мойка окон",
-    desc: "Профессиональное мытьё окон на любой высоте. Чистка рам, подоконников и стеклопакетов без разводов.",
-    img: heroImg,
+    desc: "Профессиональное мытьё окон на любой высоте без разводов.",
+    img: serviceWindow,
+    price: "от 20.000 за 1 Кв М",
   },
   {
     title: "Мытьё фасадов",
-    desc: "Очистка фасадов зданий от загрязнений, пыли и копоти. Работаем на любой высоте с промышленным оборудованием.",
-    img: officeImg,
+    desc: "Очистка фасадов от загрязнений, пыли и копоти.",
+    img: serviceFacade,
+    price: "от 20.000 за 1 Кв М",
   },
   {
     title: "Чистка брусчатки",
-    desc: "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки. Возвращаем первоначальный вид покрытию.",
-    img: heroImg,
+    desc: "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки.",
+    img: servicePaving,
+    price: "от 15.000 сум",
   },
   {
     title: "Дезинфекция",
-    desc: "Профессиональная дезинфекция помещений. Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей и животных.",
-    img: apartmentImg,
+    desc: "Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей.",
+    img: serviceDisinfection,
+    price: "от 500.000 за комнату",
   },
 ];
 
 const advantages = [
-  { icon: Shield, title: "Гарантия качества", desc: "Если результат не устроит — переделаем бесплатно" },
-  { icon: Clock, title: "Точно в срок", desc: "Приезжаем в оговорённое время без задержек" },
-  { icon: Star, title: "5+ лет опыта", desc: "Более 1 000 довольных клиентов в Ташкенте" },
-  { icon: Users, title: "Проверенная команда", desc: "Все сотрудники проходят тщательную проверку" },
+  {
+    icon: Award,
+    title: "Качество",
+    desc: "Наши профессионалы используют современные методы и экологически чистые средства, чтобы добиться безупречного результата.",
+  },
+  {
+    icon: Shield,
+    title: "Безопасность",
+    desc: "Мы ценим здоровье вас и ваших близких. Поэтому мы используем только безопасные химические компоненты, которые не представляют угрозу.",
+  },
+  {
+    icon: Users,
+    title: "Подход к каждому",
+    desc: "Мы работаем с каждым клиентом индивидуально, учитывая все ваши пожелания и требования.",
+  },
+  {
+    icon: Clock,
+    title: "Скорость",
+    desc: "Мы ценим ваше время. Поэтому мы выполняем наши работы быстро и эффективно, чтобы вы могли наслаждаться чистотой как можно скорее.",
+  },
+  {
+    icon: Percent,
+    title: "Цены",
+    desc: "Наше качество доступно. Мы предлагаем конкурентоспособные цены, а также скидки для наших постоянных клиентов.",
+  },
+  {
+    icon: ThumbsUp,
+    title: "Удобство",
+    desc: "Мы заботимся о вашем комфорте. У нас есть удобная система заказов, гибкое расписание и доставка мебели/ковров.",
+  },
 ];
 
 const steps = [
-  { num: "01", title: "Оставьте заявку", desc: "Позвоните или заполните форму на сайте" },
-  { num: "02", title: "Согласование", desc: "Менеджер уточнит детали и стоимость" },
-  { num: "03", title: "Выполнение", desc: "Команда приедет в назначенное время" },
-  { num: "04", title: "Приёмка", desc: "Проверьте результат и оплатите" },
+  {
+    num: "01",
+    title: "Подготовка помещения",
+    desc: "Осмотр объекта и подбор специализированной химии",
+  },
+  {
+    num: "02",
+    title: "Основная чистка",
+    desc: "Глубокое очищение поверхностей и материалов",
+  },
+  {
+    num: "03",
+    title: "Удаление пятен",
+    desc: "Точечная работа со сложными загрязнениями",
+  },
+  { num: "04", title: "Дезинфекция", desc: "Обработка и сушка очищенных зон" },
+  {
+    num: "05",
+    title: "Проверка качества",
+    desc: "Финальный осмотр и сдача работы клиенту",
+  },
 ];
 
 export default function HomePage() {
@@ -103,8 +166,7 @@ export default function HomePage() {
               transition={{ delay: 0.2, duration: 0.7 }}
               className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-[1.1] mb-6"
             >
-              Безупречная{" "}
-              <span className="text-gradient-gold">чистота</span>{" "}
+              Безупречная <span className="text-gradient-gold">чистота</span>{" "}
               вашего пространства
             </motion.h1>
 
@@ -114,7 +176,9 @@ export default function HomePage() {
               transition={{ delay: 0.4 }}
               className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-lg mb-10"
             >
-              Профессиональная химчистка мебели, стирка ковров и уборка квартир в Ташкенте. Используем оборудование Karcher и безопасные эко-средства.
+              Профессиональная химчистка мебели, стирка ковров и уборка квартир
+              в Ташкенте. Используем оборудование Karcher и безопасные
+              эко-средства.
             </motion.p>
 
             <motion.div
@@ -151,8 +215,12 @@ export default function HomePage() {
                 { val: "99%", label: "Рекомендуют нас" },
               ].map((s) => (
                 <div key={s.label}>
-                  <div className="font-display font-bold text-2xl md:text-3xl text-gold">{s.val}</div>
-                  <div className="text-primary-foreground/50 text-xs mt-1">{s.label}</div>
+                  <div className="font-display font-bold text-2xl md:text-3xl text-gold">
+                    {s.val}
+                  </div>
+                  <div className="text-primary-foreground/50 text-xs mt-1">
+                    {s.label}
+                  </div>
                 </div>
               ))}
             </motion.div>
@@ -166,10 +234,13 @@ export default function HomePage() {
             className="relative hidden lg:block"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-              <img src={heroImg} alt="Чистый интерьер" className="w-full h-[520px] object-cover" />
+              <img
+                src={heroImg}
+                alt="Чистый интерьер"
+                className="w-full h-[520px] object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
-
           </motion.div>
         </div>
       </section>
@@ -191,24 +262,36 @@ export default function HomePage() {
                   key={s.title}
                   onClick={() => setActiveService(i)}
                   onMouseEnter={() => setActiveService(i)}
-                  className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${activeService === i
-                    ? "bg-white/10 shadow-elevated"
-                    : "hover:bg-white/5"
-                    }`}
+                  className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${
+                    activeService === i
+                      ? "bg-white/10 shadow-elevated"
+                      : "hover:bg-white/5"
+                  }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`font-display font-semibold text-base ${activeService === i ? "text-white" : "text-foreground"
+                  <div className="flex flex-col flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className={`font-display font-semibold text-base ${
+                          activeService === i ? "text-white" : "text-foreground"
                         }`}
-                    >
-                      {s.title}
-                    </span>
-                    <ArrowRight
-                      className={`w-4 h-4 transition-all duration-300 ${activeService === i
-                        ? "text-gold translate-x-0 opacity-100"
-                        : "text-muted-foreground -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                      >
+                        {s.title}
+                      </span>
+                      <ArrowRight
+                        className={`w-4 h-4 transition-all duration-300 ${
+                          activeService === i
+                            ? "text-gold translate-x-0 opacity-100"
+                            : "text-muted-foreground -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
                         }`}
-                    />
+                      />
+                    </div>
+                    {s.price && (
+                      <div className="self-start mt-1 mb-2 px-3 py-1 rounded-md bg-black/40 border border-white/5">
+                        <span className="text-gold font-semibold text-sm">
+                          {s.price}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   {activeService === i && (
                     <motion.p
@@ -237,12 +320,19 @@ export default function HomePage() {
                   alt={services[activeService].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent hidden" />
                 <div className="absolute bottom-6 left-6 right-6">
+                  <div className="inline-block px-4 py-1.5 mb-3 rounded-lg bg-black/60 border border-gold/30 backdrop-blur-sm">
+                    <span className="text-gold font-bold">
+                      {services[activeService].price}
+                    </span>
+                  </div>
                   <h3 className="font-display font-bold text-2xl text-white mb-2">
                     {services[activeService].title}
                   </h3>
-                  <p className="text-white/80 text-sm">{services[activeService].desc}</p>
+                  <p className="text-white/80 text-sm">
+                    {services[activeService].desc}
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -260,58 +350,125 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== PROMOTIONS ===== */}
+      <Promotions />
+
       {/* ===== ADVANTAGES ===== */}
-      <section className="section-padding bg-ice">
-        <div className="container-wide">
+      <section className="section-padding bg-background relative overflow-hidden">
+        {/* Glow element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="container-wide relative z-10">
           <SectionHeading
             label="Преимущества"
             title="Почему выбирают нас"
             description="Мы не просто убираем — мы создаём атмосферу чистоты и комфорта"
           />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {advantages.map((a, i) => (
-              <AnimatedSection key={a.title} delay={i * 0.1}>
-                <div className="group bg-card rounded-xl p-8 hover-lift cursor-default h-full">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-gold/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <a.icon className="w-6 h-6 text-gold/70 group-hover:text-gold transition-colors duration-300" />
+              <motion.div
+                key={a.title}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: i * 0.1,
+                      duration: 0.5,
+                      ease: "easeOut",
+                    },
+                  },
+                  hover: {
+                    scale: 1.02,
+                    transition: { duration: 0.2, ease: "easeOut" },
+                  },
+                }}
+                className="group relative p-8 rounded-2xl bg-card border border-white/5 overflow-hidden transition-colors transition-shadow duration-300 hover:border-gold/30 hover:shadow-[0_10px_30px_-10px_rgba(255,184,0,0.15)]"
+              >
+                {/* Background glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-14 h-14 rounded-xl bg-background border border-white/10 group-hover:border-gold/50 flex items-center justify-center mb-6 transition-colors duration-300 shadow-elevated">
+                    <a.icon className="w-7 h-7 text-gold/70 group-hover:text-gold transition-colors duration-300" />
                   </div>
-                  <h3 className="font-display font-bold text-lg text-white mb-2">{a.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{a.desc}</p>
+                  <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-gold transition-colors duration-300">
+                    {a.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                    {a.desc}
+                  </p>
                 </div>
-              </AnimatedSection>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background overflow-hidden relative">
         <div className="container-wide">
           <SectionHeading
             label="Как мы работаем"
-            title="Четыре простых шага"
-            description="Заказать уборку проще, чем вы думаете"
+            title="Наш процесс — залог чистоты"
+            description="5 этапов идеального клининга вашего помещения"
           />
 
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            {/* Connecting line */}
-            <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-border" />
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center relative mt-16 pb-10 gap-8 md:gap-4">
+            {/* Horizontal line for desktop */}
+            <div className="hidden md:block absolute top-[28px] left-[5%] right-[5%] h-[2px] bg-gold/20 -z-10" />
 
             {steps.map((step, i) => (
-              <AnimatedSection key={step.num} delay={i * 0.15}>
-                <div className="text-center relative">
-                  <div className="w-24 h-24 rounded-full bg-card flex items-center justify-center mx-auto mb-6 relative z-10">
-                    <span className="font-display font-extrabold text-2xl text-gradient-gold">{step.num}</span>
-                  </div>
-                  <h3 className="font-display font-bold text-base text-white mb-2">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm">{step.desc}</p>
-                </div>
-              </AnimatedSection>
+              <motion.div
+                key={step.num}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: { opacity: 0, x: 20 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { delay: i * 0.15, duration: 0.5 },
+                  },
+                }}
+                className="group flex flex-col items-center flex-1 text-center relative z-10 w-full"
+              >
+                {/* Circle */}
+                <motion.div
+                  whileHover={{ scale: 1.15, backgroundColor: "#FFB800" }}
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-card border-2 border-gold/40 flex items-center justify-center mb-6 transition-colors shadow-elevated cursor-pointer"
+                >
+                  <motion.span className="font-display font-extrabold text-xl text-gold group-hover:text-white transition-colors">
+                    {step.num}
+                  </motion.span>
+                </motion.div>
+
+                {/* Text box with hover lift */}
+                <motion.div whileHover={{ y: -5 }} className="transition-all">
+                  <h3 className="font-display font-bold text-sm md:text-base text-foreground mb-2 group-hover:text-gold transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-muted-foreground text-xs md:text-sm max-w-[200px] mx-auto">
+                    {step.desc}
+                  </p>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      <PricingGrid />
+      <BeforeAfter />
+      <FAQ />
+      <Geography />
 
       {/* ===== CTA ===== */}
       <section className="section-padding bg-navy-gradient relative overflow-hidden">
@@ -327,7 +484,8 @@ export default function HomePage() {
               Закажите уборку прямо сейчас
             </h2>
             <p className="text-primary-foreground/60 text-lg max-w-xl mx-auto mb-10">
-              Первая уборка со скидкой 20%. Оставьте заявку и мы перезвоним в течение 15 минут.
+              Первая уборка со скидкой 20%. Оставьте заявку и мы перезвоним в
+              течение 15 минут.
             </p>
             <Link
               to="/contact"

@@ -1,0 +1,67 @@
+$gold: #FFB800;
+$gold-shadow: rgba($gold, 0.5);
+
+.slider-container {
+  max-width: 56rem;
+  margin: 3rem auto 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slider-object {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+
+  @media (min-width: 768px) {
+    height: 500px;
+  }
+
+  // Убираем черные полосы путем масштабирования изображения,
+  // что сработает как кроп (обрезка) и уберет края в letterbox.
+  img {
+    object-fit: cover !important;
+    transform: scale(1.22); // Масштабируем на 22% чтобы полностью скрыть черные полосы
+    transform-origin: center center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.custom-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  margin-left: -1rem;
+  pointer-events: none;
+
+  .handle-button {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: hsl(var(--background));
+    border: 2px solid $gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px $gold-shadow;
+
+    .icon-container {
+      display: flex;
+      gap: 0.25rem;
+
+      svg {
+        width: 0.85rem;
+        height: 0.85rem;
+        color: $gold;
+      }
+    }
+  }
+}
