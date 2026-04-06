@@ -20,62 +20,10 @@ import Promotions from "@/components/Promotions";
 import BeforeAfter from "@/components/BeforeAfter";
 import FAQ from "@/components/FAQ";
 import Geography from "@/components/Geography";
-import {
-  heroImg,
-  serviceApartment,
-  serviceCarpet,
-  serviceSofa,
-  serviceWindow,
-  serviceFacade,
-  servicePaving,
-  serviceDisinfection,
-} from "@/assets";
+import { servicesData as services } from "@/data/services";
 import { useState } from "react";
-
-const services = [
-  {
-    title: "Профессиональная уборка",
-    desc: "Регулярная и разовая уборка жилых и коммерческих помещений.",
-    img: serviceApartment,
-    price: "от 25.000 за 1 Кв М",
-  },
-  {
-    title: "Стирка ковров",
-    desc: "Профессиональная стирка ковров с вывозом и доставкой.",
-    img: serviceCarpet,
-    price: "от 15.000 сум",
-  },
-  {
-    title: "Химчистка мебели",
-    desc: "Глубокая химчистка диванов, кресел, матрасов и ковров.",
-    img: serviceSofa,
-    price: "от 50.000 сум",
-  },
-  {
-    title: "Мойка окон",
-    desc: "Профессиональное мытьё окон на любой высоте без разводов.",
-    img: serviceWindow,
-    price: "от 20.000 за 1 Кв М",
-  },
-  {
-    title: "Мытьё фасадов",
-    desc: "Очистка фасадов от загрязнений, пыли и копоти.",
-    img: serviceFacade,
-    price: "от 20.000 за 1 Кв М",
-  },
-  {
-    title: "Чистка брусчатки",
-    desc: "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки.",
-    img: servicePaving,
-    price: "от 15.000 сум",
-  },
-  {
-    title: "Дезинфекция",
-    desc: "Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей.",
-    img: serviceDisinfection,
-    price: "от 500.000 за комнату",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import { heroImg } from "@/assets";
 
 const advantages = [
   {
@@ -136,6 +84,7 @@ const steps = [
 
 export default function HomePage() {
   const [activeService, setActiveService] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -260,7 +209,10 @@ export default function HomePage() {
               {services.map((s, i) => (
                 <button
                   key={s.title}
-                  onClick={() => setActiveService(i)}
+                  onClick={() => {
+                    if (activeService === i) navigate(`/services/${s.id}`);
+                    else setActiveService(i);
+                  }}
                   onMouseEnter={() => setActiveService(i)}
                   className={`w-full text-left p-5 rounded-xl transition-all duration-300 group ${
                     activeService === i
@@ -294,20 +246,28 @@ export default function HomePage() {
                     )}
                   </div>
                   {activeService === i && (
-                    <motion.p
+                    <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
-                      className="text-muted-foreground text-sm mt-2 leading-relaxed"
+                      className="overflow-hidden"
                     >
-                      {s.desc}
-                    </motion.p>
+                      <p className="text-muted-foreground text-sm mt-2 mb-3 leading-relaxed">
+                        {s.shortDesc}
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-gold text-xs font-semibold uppercase tracking-wider hover:text-white transition-colors">
+                        Узнать подробнее
+                      </span>
+                    </motion.div>
                   )}
                 </button>
               ))}
             </div>
 
             {/* Dynamic image */}
-            <div className="lg:col-span-3 relative">
+            <Link
+              to={`/services/${services[activeService].id}`}
+              className="lg:col-span-3 relative block group/img"
+            >
               <motion.div
                 key={activeService}
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -331,11 +291,11 @@ export default function HomePage() {
                     {services[activeService].title}
                   </h3>
                   <p className="text-white/80 text-sm">
-                    {services[activeService].desc}
+                    {services[activeService].shortDesc}
                   </p>
                 </div>
               </motion.div>
-            </div>
+            </Link>
           </div>
 
           <AnimatedSection className="mt-12 text-center">

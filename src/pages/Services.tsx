@@ -5,82 +5,17 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
-import apartmentImg from "@/assets/apartment-clean.jpg";
-import officeImg from "@/assets/office-clean.jpg";
-import heroImg from "@/assets/hero-interior.jpg";
+import { servicesData as allServices } from "@/data/services";
 
-const categories = ["Все", "Квартиры", "Офисы", "Фасады и экстерьер", "Специальные"];
-
-const allServices = [
-  {
-    title: "Уборка квартир",
-    category: "Квартиры",
-    desc: "Регулярная и разовая уборка жилых помещений любой площади с использованием профессиональных средств.",
-    includes: ["Влажная уборка полов", "Удаление пыли", "Уборка кухни", "Чистка санузлов"],
-    img: apartmentImg,
-  },
-  {
-    title: "Генеральная уборка",
-    category: "Квартиры",
-    desc: "Глубокая очистка всей квартиры, включая труднодоступные места.",
-    includes: ["Мытьё окон изнутри", "Чистка бытовой техники", "Уборка за мебелью", "Дезинфекция поверхностей"],
-    img: heroImg,
-  },
-  {
-    title: "Уборка после ремонта",
-    category: "Квартиры",
-    desc: "Удаление строительной пыли и загрязнений после ремонтных работ.",
-    includes: ["Удаление цемента и клея", "Мытьё всех поверхностей", "Очистка стёкол", "Вывоз мусора"],
-    img: officeImg,
-  },
-  {
-    title: "Уборка офисов",
-    category: "Офисы",
-    desc: "Ежедневное поддержание безупречной чистоты в офисных помещениях. Работаем в удобное для вас время.",
-    includes: ["Уборка рабочих мест", "Вынос мусора", "Чистка санузлов", "Уход за полами"],
-    img: officeImg,
-  },
-  {
-    title: "Химчистка мебели",
-    category: "Специальные",
-    desc: "Глубокая химчистка диванов, кресел, матрасов и ковров. Удаление пятен, запахов и аллергенов.",
-    includes: ["Диваны и кресла", "Матрасы", "Ковры и ковролин", "Удаление пятен и запахов"],
-    img: apartmentImg,
-  },
-  {
-    title: "Мойка окон",
-    category: "Фасады и экстерьер",
-    desc: "Профессиональное мытьё окон на любой высоте. Чистка рам, подоконников и стеклопакетов без разводов.",
-    includes: ["Мытьё рам и подоконников", "Очистка стеклопакетов", "Удаление разводов", "Работа на высоте"],
-    img: heroImg,
-  },
-  {
-    title: "Мытьё фасадов",
-    category: "Фасады и экстерьер",
-    desc: "Очистка фасадов зданий от загрязнений, пыли и копоти. Работаем на любой высоте с промышленным оборудованием.",
-    includes: ["Очистка стен и облицовки", "Удаление копоти и грязи", "Промышленное оборудование", "Работа на любой высоте"],
-    img: officeImg,
-  },
-  {
-    title: "Чистка брусчатки",
-    category: "Фасады и экстерьер",
-    desc: "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки. Возвращаем первоначальный вид покрытию.",
-    includes: ["Удаление мха и грибка", "Очистка от грязи", "Мойка под давлением", "Обработка защитным составом"],
-    img: heroImg,
-  },
-  {
-    title: "Дезинфекция",
-    category: "Специальные",
-    desc: "Профессиональная дезинфекция помещений. Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей и животных.",
-    includes: ["Обработка всех поверхностей", "Уничтожение бактерий и вирусов", "Безопасные средства", "Сертифицированные препараты"],
-    img: apartmentImg,
-  },
-];
+const categories = ["Все", "Помещения", "Специальные", "Фасады и экстерьер"];
 
 export default function ServicesPage() {
   const [active, setActive] = useState("Все");
 
-  const filtered = active === "Все" ? allServices : allServices.filter((s) => s.category === active);
+  const filtered =
+    active === "Все"
+      ? allServices
+      : allServices.filter((s) => s.category === active);
 
   return (
     <Layout>
@@ -131,41 +66,55 @@ export default function ServicesPage() {
                   }`}
                 >
                   <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                    <span className="inline-block text-xs font-display font-semibold uppercase tracking-wider text-gold mb-3">
+                    <span className="inline-block text-sm md:text-base font-display font-semibold uppercase tracking-wider text-gold mb-4">
                       {service.category}
                     </span>
-                    <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-4">
+                    <h3 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white mb-6">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">{service.desc}</p>
+                    <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+                      {service.shortDesc}
+                    </p>
 
-                    <ul className="space-y-3 mb-8">
+                    <ul className="space-y-4 mb-10">
                       {service.includes.map((item) => (
-                        <li key={item} className="flex items-center gap-3 text-sm">
-                          <Check className="w-4 h-4 text-gold shrink-0" />
+                        <li
+                          key={item}
+                          className="flex items-center gap-4 text-base md:text-lg"
+                        >
+                          <Check className="w-5 h-5 text-gold shrink-0" />
                           <span className="text-foreground">{item}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex flex-wrap items-center gap-6 mt-8">
+                      <Link
+                        to={`/services/${service.id}`}
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-display font-semibold text-base bg-gold text-accent-foreground hover:bg-gold-light transition-colors"
+                      >
+                        Подробнее об услуге
+                        <ArrowRight className="w-5 h-5" />
+                      </Link>
                       <Link
                         to="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-sm bg-gold text-accent-foreground hover:bg-gold-light transition-colors"
+                        className="text-white hover:text-gold transition-colors font-semibold text-sm border-b border-transparent hover:border-gold pb-0.5"
                       >
-                        Заказать
-                        <ArrowRight className="w-4 h-4" />
+                        Оставить заявку
                       </Link>
                     </div>
                   </div>
 
-                  <div className={`rounded-2xl overflow-hidden ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <Link
+                    to={`/services/${service.id}`}
+                    className={`rounded-2xl overflow-hidden block ${i % 2 === 1 ? "lg:order-1" : ""}`}
+                  >
                     <img
                       src={service.img}
                       alt={service.title}
-                      className="w-full h-[300px] lg:h-[380px] object-cover hover:scale-105 transition-transform duration-700"
+                      className="w-full h-[350px] lg:h-[480px] object-cover object-top hover:scale-105 transition-transform duration-700"
                     />
-                  </div>
+                  </Link>
                 </div>
               </AnimatedSection>
             ))}
