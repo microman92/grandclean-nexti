@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import MobileTelegramBtn from "./MobileTelegramBtn";
+import FloatingContacts from "./FloatingContacts";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Navigation />
       <main className="flex-1 pt-16 md:pt-20">{children}</main>
       <Footer />
-      <MobileTelegramBtn />
+      <FloatingContacts />
     </div>
   );
 }

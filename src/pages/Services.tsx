@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
 import { servicesData as allServices } from "@/data/services";
+import { heroImg } from "@/assets";
 
 const categories = ["Все", "Помещения", "Специальные", "Фасады и экстерьер"];
 
@@ -20,8 +21,16 @@ export default function ServicesPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-hero-gradient section-padding">
-        <div className="container-wide">
+      <section className="relative overflow-hidden bg-hero-gradient section-padding min-h-[40vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImg}
+            alt="Наши услуги"
+            className="w-full h-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        </div>
+        <div className="container-wide relative z-10">
           <AnimatedSection>
             <span className="inline-block font-display font-semibold text-xs uppercase tracking-[0.2em] text-gold mb-4">
               Услуги

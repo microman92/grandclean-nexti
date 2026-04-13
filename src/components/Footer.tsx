@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  ArrowUpRight,
+  Instagram,
+  Facebook,
+  Send,
+} from "lucide-react";
+import { logo } from "@/assets";
 
 const links = [
   { label: "Услуги", path: "/services" },
@@ -9,17 +19,7 @@ const links = [
   { label: "Контакты", path: "/contact" },
 ];
 
-const services = [
-  "Уборка квартир",
-  "Уборка офисов",
-  "Генеральная уборка",
-  "Уборка после ремонта",
-  "Химчистка мебели",
-  "Мойка окон",
-  "Мытьё фасадов",
-  "Чистка брусчатки",
-  "Дезинфекция",
-];
+import { servicesData } from "@/data/services";
 
 export default function Footer() {
   return (
@@ -28,19 +28,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-9 h-9 rounded-lg bg-gold/20 flex items-center justify-center">
-                <span className="font-display font-bold text-sm text-gold">
-                  GC
-                </span>
-              </div>
-              <span className="font-display font-bold text-lg">
+            <Link to="/" className="flex items-center gap-3 mb-6 w-fit group">
+              <img
+                src={logo}
+                alt="GrandClean Logo"
+                className="w-10 h-10 object-contain group-hover:scale-105 transition-transform"
+              />
+              <span className="font-display font-bold text-xl tracking-wide text-white">
                 Grand<span className="text-gold">Clean</span>
               </span>
-            </div>
+            </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed mb-6">
-              Профессиональный клининг в Ташкенте. Безупречная чистота вашего
-              пространства с 2015 года.
+              Профессиональная клининговая компания в Ташкенте. Качественная
+              уборка квартир, домов и офисов, генеральная и после ремонта,
+              химчистка мебели и мойка окон по доступным ценам. Доверьте чистоту
+              вашего пространства экспертам GrandClean!
             </p>
           </div>
 
@@ -70,9 +72,14 @@ export default function Footer() {
               Услуги
             </h4>
             <ul className="space-y-3">
-              {services.map((s) => (
-                <li key={s} className="text-sm text-primary-foreground/60">
-                  {s}
+              {servicesData.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    to={`/services/${s.id}`}
+                    className="text-sm text-primary-foreground/60 hover:text-gold transition-colors duration-200"
+                  >
+                    {s.title}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -88,10 +95,10 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <div>
                   <a
-                    href="tel:+998901234567"
+                    href="tel:+998935712151"
                     className="text-sm hover:text-gold transition-colors"
                   >
-                    +998 90 123 45 67
+                    +998 93 571 21 51
                   </a>
                 </div>
               </li>
@@ -115,6 +122,32 @@ export default function Footer() {
                 <span className="text-sm text-primary-foreground/60">
                   Пн-Вс: 08:00 — 22:00
                 </span>
+              </li>
+              <li className="pt-4 border-t border-white/10 flex items-center gap-4">
+                <a
+                  href="https://www.instagram.com/grandcleanuz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold hover:text-accent-foreground transition-colors duration-300"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://facebook.com/grandcleanuz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold hover:text-accent-foreground transition-colors duration-300"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://t.me/GrandCleanUZ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold hover:text-accent-foreground transition-colors duration-300"
+                >
+                  <Send className="w-4 h-4 -ml-0.5 mt-0.5" />
+                </a>
               </li>
             </ul>
           </div>

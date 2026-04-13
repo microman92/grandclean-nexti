@@ -83,11 +83,11 @@ export default function Navigation() {
             {i18n.language === "ru" ? "UZ" : "RU"}
           </button>
           <a
-            href="tel:+998901234567"
+            href="tel:+998935712151"
             className="flex items-center gap-2 text-sm font-medium text-white"
           >
             <Phone className="w-4 h-4 text-gold" />
-            +998 90 123 45 67
+            +998 93 571 21 51
           </a>
           <Link
             to="/contact"
@@ -142,11 +142,11 @@ export default function Navigation() {
                   Язык / Til: {i18n.language === "ru" ? "O'zbekcha" : "Русский"}
                 </button>
                 <a
-                  href="tel:+998901234567"
+                  href="tel:+998935712151"
                   className="flex items-center gap-2 text-sm font-medium text-white"
                 >
                   <Phone className="w-4 h-4 text-gold" />
-                  +998 90 123 45 67
+                  +998 93 571 21 51
                 </a>
                 <Link
                   to="/contact"

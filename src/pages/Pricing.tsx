@@ -3,28 +3,9 @@ import { Check, ArrowRight, HelpCircle } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import SectionHeading from "@/components/SectionHeading";
-
-const pricingData = [
-  {
-    header: "Уборка квартир",
-    items: [
-      { service: "1-комнатная", support: "от 150 000", general: "от 350 000", afterRepair: "от 500 000" },
-      { service: "2-комнатная", support: "от 200 000", general: "от 450 000", afterRepair: "от 650 000" },
-      { service: "3-комнатная", support: "от 280 000", general: "от 600 000", afterRepair: "от 850 000" },
-      { service: "4-комнатная", support: "от 350 000", general: "от 750 000", afterRepair: "от 1 000 000" },
-    ],
-  },
-  {
-    header: "Дополнительные услуги",
-    items: [
-      { service: "Мытьё окон (1 шт)", support: "30 000", general: "—", afterRepair: "—" },
-      { service: "Химчистка дивана", support: "250 000", general: "—", afterRepair: "—" },
-      { service: "Химчистка матраса", support: "200 000", general: "—", afterRepair: "—" },
-      { service: "Химчистка ковра (м²)", support: "25 000", general: "—", afterRepair: "—" },
-      { service: "Глажка белья (час)", support: "50 000", general: "—", afterRepair: "—" },
-    ],
-  },
-];
+import PricingGrid from "@/components/PricingGrid";
+import { servicesData } from "@/data/services";
+import { heroImg } from "@/assets";
 
 const includes = [
   "Профессиональное оборудование",
@@ -58,8 +39,16 @@ export default function PricingPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-hero-gradient section-padding">
-        <div className="container-wide">
+      <section className="relative overflow-hidden bg-hero-gradient section-padding min-h-[40vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImg}
+            alt="Цены на услуги"
+            className="w-full h-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        </div>
+        <div className="container-wide relative z-10">
           <AnimatedSection>
             <span className="inline-block font-display font-semibold text-xs uppercase tracking-[0.2em] text-gold mb-4">
               Цены
@@ -74,42 +63,46 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing Tables */}
-      <section className="section-padding bg-background">
+      {/* Pricing Grid Tariffs */}
+      <PricingGrid />
+
+      {/* Services Base Prices */}
+      <section className="section-padding bg-background border-t border-border/10">
         <div className="container-wide">
-          {pricingData.map((table, ti) => (
-            <AnimatedSection key={table.header} className={ti > 0 ? "mt-16" : ""}>
-              <h3 className="font-display font-bold text-2xl text-white mb-6">{table.header}</h3>
-              <div className="overflow-x-auto rounded-xl border border-border">
-                <table className="w-full min-w-[600px]">
-                  <thead>
-                    <tr className="bg-card">
-                      <th className="text-left px-6 py-4 font-display font-semibold text-sm text-white">Услуга</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">Поддерживающая</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">Генеральная</th>
-                      <th className="text-center px-6 py-4 font-display font-semibold text-sm text-white">После ремонта</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {table.items.map((row, i) => (
-                      <tr key={row.service} className={`border-t border-border ${i % 2 === 0 ? "bg-background" : "bg-card/50"}`}>
-                        <td className="px-6 py-4 font-medium text-sm text-foreground">{row.service}</td>
-                        <td className="px-6 py-4 text-center text-sm text-foreground">{row.support}</td>
-                        <td className="px-6 py-4 text-center text-sm text-foreground">{row.general}</td>
-                        <td className="px-6 py-4 text-center text-sm text-foreground">{row.afterRepair}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="text-xs text-muted-foreground mt-3">* Цены указаны в узбекских сумах</p>
-            </AnimatedSection>
-          ))}
+          <SectionHeading
+            label="Базовые тарифы"
+            title="Цены на другие услуги"
+            description="Окончательная стоимость зависит от степени загрязнения и устанавливается менеджером после осмотра"
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
+            {servicesData.map((s, i) => (
+              <AnimatedSection key={s.id} delay={i * 0.05}>
+                <div className="p-8 rounded-2xl bg-card border border-white/5 hover:border-gold/30 hover:-translate-y-1 transition-all duration-300 shadow-md h-full flex flex-col group">
+                  <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-gold transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="text-white/50 text-sm leading-relaxed max-w-[90%] mb-8 flex-1">
+                    {s.shortDesc}
+                  </p>
+                  <div className="flex flex-col gap-1 mt-auto pt-5 border-t border-white/5">
+                    <span className="text-xs uppercase tracking-wider font-semibold text-white/40">
+                      Ориентировочная цена
+                    </span>
+                    <span className="font-display font-extrabold text-xl xl:text-2xl text-gold whitespace-nowrap">
+                      {s.price}
+                    </span>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
 
           {/* What's included */}
           <AnimatedSection className="mt-16">
             <div className="bg-ice rounded-2xl p-8 md:p-12">
-              <h3 className="font-display font-bold text-2xl text-white mb-6">Что включено в стоимость</h3>
+              <h3 className="font-display font-bold text-2xl text-white mb-6">
+                Что включено в стоимость
+              </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {includes.map((item) => (
                   <div key={item} className="flex items-center gap-3">

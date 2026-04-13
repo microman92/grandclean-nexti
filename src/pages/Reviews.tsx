@@ -1,17 +1,20 @@
 import { Star, Quote } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { heroImg } from "@/assets";
 
 const reviews = [
   {
+    name: "Феруза",
+    rating: 5,
+    text: "Заказывала чистку ковров и мягкой мебели в офис после пыльных бурь, работа была сделана качественно и аккуратно! Недавно заказала стирку ковров и матрасов, после ремонта в квартире всё было очень пыльным и грязным, вернули всё в идеальном состоянии, почти как новые))) спасибо большое за оперативность и качество!",
+  },
+  {
     name: "Алина Каримова",
-    role: "Владелец квартиры",
     rating: 5,
     text: "Заказывали генеральную уборку перед Новым годом. Квартира сияла! Особенно порадовала работа с окнами — ни одного развода. Теперь только GrandClean.",
-    date: "Январь 2024",
   },
   {
     name: "Дмитрий Ли",
@@ -61,8 +64,16 @@ export default function ReviewsPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-hero-gradient section-padding">
-        <div className="container-wide">
+      <section className="relative overflow-hidden bg-hero-gradient section-padding min-h-[40vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImg}
+            alt="Отзывы"
+            className="w-full h-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        </div>
+        <div className="container-wide relative z-10">
           <AnimatedSection>
             <span className="inline-block font-display font-semibold text-xs uppercase tracking-[0.2em] text-gold mb-4">
               Отзывы
@@ -81,9 +92,17 @@ export default function ReviewsPage() {
       <section className="py-12 bg-ice">
         <div className="container-wide grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
-            <AnimatedSection key={s.label} delay={i * 0.1} className="text-center">
-              <div className="font-display font-extrabold text-3xl md:text-4xl text-gradient-gold">{s.value}</div>
-              <div className="text-muted-foreground text-sm mt-1">{s.label}</div>
+            <AnimatedSection
+              key={s.label}
+              delay={i * 0.1}
+              className="text-center"
+            >
+              <div className="font-display font-extrabold text-3xl md:text-4xl text-gradient-gold">
+                {s.value}
+              </div>
+              <div className="text-muted-foreground text-sm mt-1">
+                {s.label}
+              </div>
             </AnimatedSection>
           ))}
         </div>
@@ -95,25 +114,23 @@ export default function ReviewsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((review, i) => (
               <AnimatedSection key={review.name} delay={i * 0.05}>
-                <div className="bg-card rounded-xl p-7 h-full flex flex-col hover-lift">
-                  <Quote className="w-8 h-8 text-gold/30 mb-4" />
+                <div className="bg-[#1e1e1e]/50 border border-gold rounded-lg p-6 sm:p-8 h-full flex flex-col hover-lift">
+                  <div className="font-display font-medium text-xl md:text-2xl text-white mb-2 text-center">
+                    {review.name}
+                  </div>
 
-                  <p className="text-foreground text-sm leading-relaxed flex-1 mb-6">
-                    "{review.text}"
-                  </p>
-
-                  <div className="flex items-center gap-1 mb-4">
+                  <div className="flex items-center justify-center gap-1.5 mb-6">
                     {Array.from({ length: review.rating }).map((_, si) => (
-                      <Star key={si} className="w-4 h-4 fill-gold text-gold" />
+                      <Star
+                        key={si}
+                        className="w-5 h-5 fill-gold text-gold scale-[1.1]"
+                      />
                     ))}
                   </div>
 
-                  <div className="border-t border-border pt-4">
-                    <div className="font-display font-semibold text-sm text-white">{review.name}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">
-                      {review.role} · {review.date}
-                    </div>
-                  </div>
+                  <p className="text-white/90 text-[15px] sm:text-base leading-relaxed flex-1">
+                    {review.text}
+                  </p>
                 </div>
               </AnimatedSection>
             ))}

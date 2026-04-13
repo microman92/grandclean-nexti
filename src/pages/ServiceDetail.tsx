@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Check, ArrowRight } from "lucide-react";
+import { ArrowLeft, Check, ArrowRight, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import CarpetWashingSteps from "@/components/CarpetWashingSteps";
 import { servicesData } from "@/data/services";
 import NotFound from "./NotFound";
 
@@ -82,22 +83,62 @@ export default function ServiceDetail() {
                 className="w-full aspect-[4/3] object-cover object-top hover:scale-105 transition-transform duration-700"
               />
             </div>
+          </AnimatedSection>
+        </div>
 
-            <div className="bg-card p-10 rounded-3xl border border-white/5 shadow-lg">
-              <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-8">
-                Что включено в стоимость:
-              </h3>
-              <ul className="space-y-5">
-                {service.includes.map((item) => (
-                  <li key={item} className="flex items-center gap-5 text-lg">
-                    <Check className="w-8 h-8 text-gold shrink-0 bg-gold/10 p-1.5 rounded-full" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* --- Обновленный, адаптивный блок что включено (для ВСЕХ услуг) --- */}
+        <div className="container-wide mt-12 md:mt-16">
+          <AnimatedSection delay={0.2}>
+            <div className="bg-card p-8 md:p-12 lg:p-14 rounded-[2rem] border border-white/5 shadow-xl relative overflow-hidden">
+              {/* Декоративная иконка щита на фоне для дизайна */}
+              <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-[0.03] pointer-events-none">
+                <ShieldCheck className="w-96 h-96 text-gold" />
+              </div>
+
+              <div className="relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+                {/* SEO-блок с описанием и заголовком (забирает часть пространства слева) */}
+                <div className="lg:w-5/12 bg-transparent">
+                  <h3 className="font-display font-bold text-3xl md:text-4xl text-white mb-5 leading-tight">
+                    Что входит
+                    <br />
+                    <span className="text-gold">в стоимость</span>
+                  </h3>
+                  <p className="text-white/60 text-base md:text-lg leading-relaxed">
+                    Мы ответственно подходим к выполнению услуги{" "}
+                    <strong>{service.title.toLowerCase()}</strong>. В финальную
+                    стоимость уже включены все необходимые этапы, премиальные
+                    чистящие средства и профессиональное оборудование. Никаких
+                    скрытых платежей.
+                  </p>
+                </div>
+
+                {/* Сетка включенных опций (забирает оставшееся пространство справа, нет "воздуха") */}
+                <div className="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 w-full">
+                  {service.includes.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-4 p-5 md:p-6 rounded-2xl bg-[#1e1e1e] border border-white/5 hover:border-gold/30 hover:bg-[#252525] transition-all duration-300 shadow-sm"
+                    >
+                      <div className="bg-gold/10 p-2 rounded-full mt-0.5 shrink-0">
+                        <Check className="w-5 h-5 text-gold" />
+                      </div>
+                      <span className="text-white/90 font-medium text-base md:text-lg leading-snug">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </AnimatedSection>
         </div>
+
+        {/* --- Индивидуальный блок только для стирки ковров --- */}
+        {service.id === "stirka-kovrov" && (
+          <div className="container-wide mt-12 md:mt-16">
+            <CarpetWashingSteps />
+          </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+        )}
       </section>
     </Layout>
   );
