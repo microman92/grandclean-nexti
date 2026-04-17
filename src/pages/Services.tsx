@@ -116,12 +116,12 @@ export default function ServicesPage() {
 
                   <Link
                     to={`/services/${service.id}`}
-                    className={`rounded-2xl overflow-hidden block ${i % 2 === 1 ? "lg:order-1" : ""}`}
+                    className={`rounded-2xl overflow-hidden block w-full ${i % 2 === 1 ? "lg:order-1" : ""}`}
                   >
                     <img
                       src={service.img}
                       alt={service.title}
-                      className="w-full h-[350px] lg:h-[480px] object-cover object-top hover:scale-105 transition-transform duration-700"
+                      className="w-full h-[500px] lg:h-[480px] object-cover object-top hover:scale-105 transition-transform duration-700"
                     />
                   </Link>
                 </div>

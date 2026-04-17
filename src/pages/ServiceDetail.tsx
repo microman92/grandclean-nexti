@@ -3,6 +3,7 @@ import { ArrowLeft, Check, ArrowRight, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import CarpetWashingSteps from "@/components/CarpetWashingSteps";
+import ServiceFAQ from "@/components/ServiceFAQ";
 import { servicesData } from "@/data/services";
 import NotFound from "./NotFound";
 
@@ -55,11 +56,11 @@ export default function ServiceDetail() {
               {service.fullDesc}
             </p>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-10 inline-block shadow-elevated">
-              <div className="text-sm uppercase tracking-wider font-semibold text-white/50 mb-2">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 lg:p-8 mb-8 lg:mb-10 inline-block shadow-elevated">
+              <div className="text-xs lg:text-sm uppercase tracking-wider font-semibold text-white/50 mb-1.5 lg:mb-2">
                 Начальная стоимость
               </div>
-              <div className="font-display font-bold text-4xl text-gold">
+              <div className="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-gold">
                 {service.price}
               </div>
             </div>
@@ -67,10 +68,10 @@ export default function ServiceDetail() {
             <div className="block">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 rounded-xl font-display font-bold text-lg bg-gold text-accent-foreground hover:bg-gold-light transition-colors shadow-gold"
+                className="inline-flex items-center justify-center gap-2 lg:gap-3 w-full sm:w-auto px-6 lg:px-10 py-3.5 lg:py-5 rounded-xl font-display font-bold text-base lg:text-lg bg-gold text-accent-foreground hover:bg-gold-light transition-colors shadow-gold"
               >
                 Заказать услугу
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5" />
               </Link>
             </div>
           </AnimatedSection>
@@ -133,11 +134,18 @@ export default function ServiceDetail() {
           </AnimatedSection>
         </div>
 
+        {/* --- FAQ блок для SEO и ИИ-поиска --- */}
+        {service.faq && service.faq.length > 0 && (
+          <div className="container-wide mt-12 md:mt-16">
+            <ServiceFAQ faq={service.faq} serviceTitle={service.title} />
+          </div>
+        )}
+
         {/* --- Индивидуальный блок только для стирки ковров --- */}
         {service.id === "stirka-kovrov" && (
           <div className="container-wide mt-12 md:mt-16">
             <CarpetWashingSteps />
-          </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+          </div>
         )}
       </section>
     </Layout>

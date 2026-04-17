@@ -273,12 +273,12 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl overflow-hidden h-[400px] lg:h-full min-h-[400px]"
+                className="rounded-2xl overflow-hidden h-[500px] lg:h-full lg:min-h-[400px]"
               >
                 <img
                   src={services[activeService].img}
                   alt={services[activeService].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top lg:object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent hidden" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -314,7 +314,7 @@ export default function HomePage() {
       <Promotions />
 
       {/* ===== ADVANTAGES ===== */}
-      <section className="section-padding bg-background relative overflow-hidden">
+      <section className="pb-20 pt-10 md:pb-28 md:pt-16 lg:py-32 bg-background relative overflow-hidden">
         {/* Glow element */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -380,9 +380,9 @@ export default function HomePage() {
             description="5 этапов идеального клининга вашего помещения"
           />
 
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center relative mt-16 pb-10 gap-8 md:gap-4">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row justify-center lg:justify-between items-start lg:items-center relative mt-16 pb-10 gap-4 md:gap-8 lg:gap-4 max-w-[600px] lg:max-w-none mx-auto">
             {/* Horizontal line for desktop */}
-            <div className="hidden md:block absolute top-[28px] left-[5%] right-[5%] h-[2px] bg-gold/20 -z-10" />
+            <div className="hidden lg:block absolute top-[28px] left-[5%] right-[5%] h-[2px] bg-gold/20 -z-10" />
 
             {steps.map((step, i) => (
               <motion.div
@@ -398,7 +398,7 @@ export default function HomePage() {
                     transition: { delay: i * 0.15, duration: 0.5 },
                   },
                 }}
-                className="group flex flex-col items-center flex-1 text-center relative z-10 w-full"
+                className="group flex flex-col items-center flex-1 text-center relative z-10 w-full max-w-[255px] mx-auto last:col-span-2 lg:last:col-span-1 lg:max-w-none"
               >
                 {/* Circle */}
                 <motion.div

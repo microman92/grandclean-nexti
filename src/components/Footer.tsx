@@ -24,7 +24,7 @@ import { servicesData } from "@/data/services";
 export default function Footer() {
   return (
     <footer className="bg-navy text-primary-foreground">
-      <div className="container-wide section-padding">
+      <div className="container-wide py-10 md:py-12 lg:py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="order-4 lg:order-none">
             <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-gold mb-6">
               Услуги
             </h4>
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="order-3 lg:order-none">
             <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-gold mb-6">
               Контакты
             </h4>
@@ -113,9 +113,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-sm text-primary-foreground/60">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Grand+Clean,+Tashkent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary-foreground/60 hover:text-gold transition-colors"
+                >
                   Ташкент, Узбекистан
-                </span>
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-gold mt-0.5 shrink-0" />
@@ -123,7 +128,7 @@ export default function Footer() {
                   Пн-Вс: 08:00 — 22:00
                 </span>
               </li>
-              <li className="pt-4 border-t border-white/10 flex items-center gap-4">
+              <li className="pt-4 border-t-0 lg:border-t border-white/10 flex items-center gap-4">
                 <a
                   href="https://www.instagram.com/grandcleanuz/"
                   target="_blank"

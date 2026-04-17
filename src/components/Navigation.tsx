@@ -76,12 +76,28 @@ export default function Navigation() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <button
-            onClick={toggleLanguage}
-            className="text-white hover:text-gold transition-colors font-medium text-sm px-2 uppercase"
-          >
-            {i18n.language === "ru" ? "UZ" : "RU"}
-          </button>
+          <div className="flex bg-white/5 p-1 rounded-lg">
+            <button
+              onClick={() => i18n.changeLanguage("ru")}
+              className={`px-3 py-1.5 rounded-md text-xs font-bold tracking-wider transition-all duration-300 ${
+                i18n.language === "ru"
+                  ? "bg-gold text-accent-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-white"
+              }`}
+            >
+              RU
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage("uz")}
+              className={`px-3 py-1.5 rounded-md text-xs font-bold tracking-wider transition-all duration-300 ${
+                i18n.language === "uz"
+                  ? "bg-gold text-accent-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-white"
+              }`}
+            >
+              UZ
+            </button>
+          </div>
           <a
             href="tel:+998935712151"
             className="flex items-center gap-2 text-sm font-medium text-white"
@@ -134,23 +150,43 @@ export default function Navigation() {
                   {t(`nav.${item.key}`)}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-border flex flex-col gap-3">
-                <button
-                  onClick={toggleLanguage}
-                  className="text-left text-white font-medium py-2 uppercase"
-                >
-                  Язык / Til: {i18n.language === "ru" ? "O'zbekcha" : "Русский"}
-                </button>
+              <div className="pt-4 mt-2 border-t border-border flex flex-col gap-5">
+                <div className="flex items-center">
+                  <div className="flex bg-white/5 p-1 rounded-lg">
+                    <button
+                      onClick={() => i18n.changeLanguage("ru")}
+                      className={`px-4 py-1.5 rounded-md text-xs font-bold tracking-wider transition-all duration-300 ${
+                        i18n.language === "ru"
+                          ? "bg-gold text-accent-foreground shadow-sm"
+                          : "text-muted-foreground hover:text-white"
+                      }`}
+                    >
+                      RU
+                    </button>
+                    <button
+                      onClick={() => i18n.changeLanguage("uz")}
+                      className={`px-4 py-1.5 rounded-md text-xs font-bold tracking-wider transition-all duration-300 ${
+                        i18n.language === "uz"
+                          ? "bg-gold text-accent-foreground shadow-sm"
+                          : "text-muted-foreground hover:text-white"
+                      }`}
+                    >
+                      UZ
+                    </button>
+                  </div>
+                </div>
+
                 <a
                   href="tel:+998935712151"
-                  className="flex items-center gap-2 text-sm font-medium text-white"
+                  className="flex items-center w-fit gap-2 text-sm font-medium text-white"
                 >
                   <Phone className="w-4 h-4 text-gold" />
                   +998 93 571 21 51
                 </a>
+
                 <Link
                   to="/contact"
-                  className="px-5 py-3 rounded-lg font-display font-semibold text-sm text-accent-foreground bg-gold text-center"
+                  className="w-fit px-6 py-2.5 rounded-lg font-display font-semibold text-sm text-accent-foreground bg-gold hover:bg-gold-light transition-colors"
                 >
                   {t("nav.order")}
                 </Link>

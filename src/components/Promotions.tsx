@@ -31,7 +31,7 @@ const promotions = [
 
 export default function Promotions() {
   return (
-    <section className="section-padding bg-background relative z-10 border-t border-white/5">
+    <section className="pt-20 md:pt-28 lg:pt-32 pb-10 lg:pb-16 bg-background relative z-10 border-t border-white/5">
       <div className="container-wide">
         <SectionHeading
           label="Акции"
@@ -39,7 +39,11 @@ export default function Promotions() {
           description="Воспользуйтесь нашими специальными предложениями для максимальной выгоды"
         />
 
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
+        <div
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12 justify-items-center 
+  [@media(min-width:390px)_and_(max-width:767px)]:max-w-[400px] 
+  [@media(min-width:390px)_and_(max-width:767px)]:mx-auto"
+        >
           {promotions.map((promo, i) => (
             <motion.div
               key={promo.title}
@@ -50,7 +54,7 @@ export default function Promotions() {
               whileHover={{ y: -8 }}
               className="group flex flex-col bg-[#1C1C1C] rounded-xl overflow-hidden border border-white/5 transition-colors transition-shadow duration-300 hover:border-gold/30 hover:shadow-[0_15px_40px_-10px_rgba(255,184,0,0.2)]"
             >
-              <div className="h-[260px] overflow-hidden relative">
+              <div className="h-[260px] overflow-hidden relative md:max-w-full w-full mx-auto">
                 <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none" />
                 <motion.img
                   src={promo.img}

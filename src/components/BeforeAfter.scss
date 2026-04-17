@@ -37,12 +37,17 @@ $gold-shadow: rgba($gold, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  margin-left: -1rem;
-  pointer-events: none;
+  width: 2.5rem;
+  margin-left: -1.25rem;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
 
   .handle-button {
-    position: absolute;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -55,6 +60,8 @@ $gold-shadow: rgba($gold, 0.5);
 
     .icon-container {
       display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 0.25rem;
 
       svg {

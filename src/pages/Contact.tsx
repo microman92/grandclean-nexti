@@ -196,25 +196,28 @@ export default function ContactPage() {
                   <h3 className="font-display font-bold text-xl text-white mb-6">
                     Контактная информация
                   </h3>
-                  <div className="space-y-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6">
                     {contactInfo.map((c) => (
-                      <div key={c.label} className="flex items-start gap-4">
+                      <div
+                        key={c.label}
+                        className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4"
+                      >
                         <div className="w-10 h-10 rounded-lg bg-card flex items-center justify-center shrink-0">
                           <c.icon className="w-5 h-5 text-gold" />
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <div className="text-xs text-muted-foreground mb-0.5">
                             {c.label}
                           </div>
                           {c.href ? (
                             <a
                               href={c.href}
-                              className="text-sm font-medium text-white hover:text-gold transition-colors"
+                              className="text-sm font-medium text-white hover:text-gold transition-colors break-words block"
                             >
                               {c.value}
                             </a>
                           ) : (
-                            <span className="text-sm font-medium text-white">
+                            <span className="text-sm font-medium text-white break-words block">
                               {c.value}
                             </span>
                           )}
