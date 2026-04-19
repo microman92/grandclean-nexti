@@ -1,0 +1,21 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/[lang]/services/[id]/page",{
+
+/***/ "(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22D%3A%5C%5C%D0%9C%D0%B8%D1%88%D0%B0%5C%5CMyProjects%5C%5CGrandNext%5C%5C%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%5C%5Cgrandclean-redesign-project%5C%5Capp%5C%5C%5Blang%5D%5C%5Cservices%5C%5C%5Bid%5D%5C%5CServiceDetailClient.tsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=false!":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22D%3A%5C%5C%D0%9C%D0%B8%D1%88%D0%B0%5C%5CMyProjects%5C%5CGrandNext%5C%5C%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%5C%5Cgrandclean-redesign-project%5C%5Capp%5C%5C%5Blang%5D%5C%5Cservices%5C%5C%5Bid%5D%5C%5CServiceDetailClient.tsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=false! ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+eval(__webpack_require__.ts("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./app/[lang]/services/[id]/ServiceDetailClient.tsx */ \"(app-pages-browser)/./app/[lang]/services/[id]/ServiceDetailClient.tsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvYnVpbGQvd2VicGFjay9sb2FkZXJzL25leHQtZmxpZ2h0LWNsaWVudC1lbnRyeS1sb2FkZXIuanM/bW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyRCUzQSU1QyU1QyVEMCU5QyVEMCVCOCVEMSU4OCVEMCVCMCU1QyU1Q015UHJvamVjdHMlNUMlNUNHcmFuZE5leHQlNUMlNUMlRDAlOUQlRDAlQkUlRDAlQjIlRDAlQjAlRDElOEYlMjAlRDAlQkYlRDAlQjAlRDAlQkYlRDAlQkElRDAlQjAlNUMlNUNncmFuZGNsZWFuLXJlZGVzaWduLXByb2plY3QlNUMlNUNhcHAlNUMlNUMlNUJsYW5nJTVEJTVDJTVDc2VydmljZXMlNUMlNUMlNUJpZCU1RCU1QyU1Q1NlcnZpY2VEZXRhaWxDbGllbnQudHN4JTIyJTJDJTIyaWRzJTIyJTNBJTVCJTIyZGVmYXVsdCUyMiU1RCU3RCZzZXJ2ZXI9ZmFsc2UhIiwibWFwcGluZ3MiOiJBQUFBLDhOQUFpTSIsInNvdXJjZXMiOlsid2VicGFjazovL19OX0UvPzAwMDAiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIsIHdlYnBhY2tFeHBvcnRzOiBbXCJkZWZhdWx0XCJdICovIFwiRDpcXFxc0JzQuNGI0LBcXFxcTXlQcm9qZWN0c1xcXFxHcmFuZE5leHRcXFxc0J3QvtCy0LDRjyDQv9Cw0L/QutCwXFxcXGdyYW5kY2xlYW4tcmVkZXNpZ24tcHJvamVjdFxcXFxhcHBcXFxcW2xhbmddXFxcXHNlcnZpY2VzXFxcXFtpZF1cXFxcU2VydmljZURldGFpbENsaWVudC50c3hcIik7XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22D%3A%5C%5C%D0%9C%D0%B8%D1%88%D0%B0%5C%5CMyProjects%5C%5CGrandNext%5C%5C%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B0%5C%5Cgrandclean-redesign-project%5C%5Capp%5C%5C%5Blang%5D%5C%5Cservices%5C%5C%5Bid%5D%5C%5CServiceDetailClient.tsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=false!\n"));
+
+/***/ })
+
+});
