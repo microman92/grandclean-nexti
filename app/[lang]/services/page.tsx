@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { servicesData, getServiceTranslation } from "@/data/services";
@@ -12,18 +12,19 @@ import AnimatedSection from "@/app/components/AnimatedSection";
 
 const categories = ["Все", "Помещения", "Специальные", "Фасады и экстерьер"];
 
-export default function ServicesPage({ params }: { params: { lang: Locale } }) {
-  const lang = params.lang;
+export default function ServicesPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = use(params);
   const t = getDictionary(lang);
   const [active, setActive] = useState("Все");
 
-  const filtered =
-    active === "Все"
-      ? servicesData
-      : servicesData.filter((s) => {
-          const tr = getServiceTranslation(s, lang);
-          return tr.category === active;
-        });
+  const categoryLabels =
+    lang === "uz"
+      ? ["Hammasi", "Xonalar", "Maxsus", "Fasadlar va tashqi ko'rinish"]
+      : categories;
 
   return (
     <>
@@ -31,7 +32,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
       <section className="relative overflow-hidden bg-hero-gradient section-padding min-h-[40vh] flex items-center pt-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-interior.jpg"
+            src="/images/hero-interior.webp"
             alt={t.services.pageTitle}
             fill
             className="object-cover opacity-10"
@@ -58,7 +59,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
         <div className="container-wide">
           {/* Tabs */}
           <AnimatedSection className="flex flex-wrap gap-3 mb-12">
-            {categories.map((cat) => (
+            {categories.map((cat, index) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
@@ -68,17 +69,22 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
                     : "bg-card text-foreground hover:bg-white/10"
                 }`}
               >
-                {cat === "Все" && lang === "uz" ? "Hammasi" : cat}
+                {categoryLabels[index]}
               </button>
             ))}
           </AnimatedSection>
 
           {/* Service list - alternating layout */}
           <div className="space-y-16">
-            {filtered.map((service, i) => {
+            {servicesData.map((service, i) => {
               const tr = getServiceTranslation(service, lang);
+              const isVisible = active === "Все" || tr.category === active;
               return (
                 <AnimatedSection key={service.id} delay={i * 0.05}>
+                  <div
+                    className={isVisible ? "" : "hidden"}
+                    aria-hidden={!isVisible}
+                  >
                   <div
                     className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
                       i % 2 === 1 ? "lg:direction-rtl" : ""
@@ -136,6 +142,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
                         className="w-full h-[500px] lg:h-[480px] object-cover object-top hover:scale-105 transition-transform duration-700"
                       />
                     </Link>
+                  </div>
                   </div>
                 </AnimatedSection>
               );

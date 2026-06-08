@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import Image from "next/image";
@@ -27,12 +28,12 @@ const timeline = [
   },
   {
     year: "2021",
-    title: "Лидер рынка",
-    desc: "Стали одной из крупнейших клининговых компаний в Узбекистане.",
+    title: "Премиальное качество",
+    desc: "Стали предоставлять сервис премиум-класса на рынке Узбекистана.",
   },
   {
     year: "2024",
-    title: "1 000+ клиентов",
+    title: "10 000+ клиентов",
     desc: "Обслуживаем дома, офисы и коммерческие объекты по всему Ташкенту.",
   },
 ];
@@ -56,8 +57,12 @@ const values = [
   { icon: Award, title: "Качество", desc: "Высокие стандарты на каждом этапе" },
 ];
 
-export default function AboutPage({ params }: { params: { lang: Locale } }) {
-  const lang = params.lang;
+export default function AboutPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
+  const { lang } = use(params);
   const t = getDictionary(lang);
 
   return (
@@ -66,7 +71,7 @@ export default function AboutPage({ params }: { params: { lang: Locale } }) {
       <section className="relative overflow-hidden bg-hero-gradient section-padding min-h-[40vh] flex items-center pt-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-interior.jpg"
+            src="/images/hero-interior.webp"
             alt="О компании"
             fill
             className="object-cover opacity-10"
@@ -96,7 +101,7 @@ export default function AboutPage({ params }: { params: { lang: Locale } }) {
           <AnimatedSection>
             <div className="relative">
               <Image
-                src="/images/team.jpg"
+                src="/images/team.webp"
                 alt="Наша команда"
                 width={800}
                 height={600}
@@ -119,18 +124,18 @@ export default function AboutPage({ params }: { params: { lang: Locale } }) {
             </span>
             <h2 className="font-display font-bold text-3xl md:text-4xl text-white leading-tight mb-6">
               {lang === "ru"
-                ? "От идеи до лидерства на рынке"
-                : "G'oyadan bozorda yetakchilikka qadar"}
+                ? "Предоставляем премиальное качество"
+                : "Premium sifatni taqdim etamiz"}
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               {lang === "ru"
-                ? "GrandClean была основана в 2015 году с простой миссией — сделать профессиональный клининг доступным каждому жителю Ташкента."
-                : "GrandClean 2015-yilda har bir Toshkent aholisiga professional tozalash xizmatlarini ko'rsatish maqsadida tashkil etilgan."}
+                ? "GrandClean была основана в 2019 году с простой миссией — сделать профессиональный клининг доступным каждому жителю Ташкента."
+                : "GrandClean 2019-yilda har bir Toshkent aholisiga professional tozalash xizmatlarini ko'rsatish maqsadida tashkil etilgan."}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-4">
               {lang === "ru"
-                ? "Сегодня мы — команда из более чем 80 проверенных специалистов, оснащённых современным оборудованием и экологичными средствами. Мы обслуживаем тысячи клиентов и постоянно совершенствуем качество наших услуг."
-                : "Bugungi kunda biz — zamonaviy uskunalar va ekologik toza vositalar bilan jihozlangan 80 dan ortiq mutaxassislardan iborat jamoamiz. Biz minglab mijozlarga xizmat ko'rsatamiz va xizmatlarimiz sifatini doimiy ravishda oshirib boramiz."}
+                ? "Сегодня мы — команда из 30 специалистов-технологов, оснащённых современным оборудованием и экологичными средствами. Мы обслуживаем тысячи клиентов и постоянно совершенствуем качество наших услуг."
+                : "Bugungi kunda biz — zamonaviy uskunalar va ekologik toza vositalar bilan jihozlangan 30 nafar mutaxassis-texnologlardan iborat jamoamiz. Biz minglab mijozlarga xizmat ko'rsatamiz va xizmatlarimiz sifatini doimiy ravishda oshirib boramiz."}
             </p>
             <p className="text-muted-foreground leading-relaxed">
               {lang === "ru"
@@ -241,13 +246,13 @@ export default function AboutPage({ params }: { params: { lang: Locale } }) {
               }
               description={
                 lang === "ru"
-                  ? "Более 80 квалифицированных специалистов готовы к работе"
-                  : "80 dan ortiq malakali mutaxassislar ishlashga tayyor"
+                  ? "Команда из 30 специалистов-технологов готова к работе"
+                  : "30 nafar mutaxassis-texnologlardan iborat jamoa ishlashga tayyor"
               }
             />
             <div className="rounded-2xl overflow-hidden max-w-4xl mx-auto h-[300px] md:h-[400px] relative">
               <Image
-                src="/images/hero-interior.jpg"
+                src="/images/hero-interior.webp"
                 alt="Наш офис"
                 fill
                 className="object-cover"

@@ -1,7 +1,6 @@
 "use client";
 
 import type { Locale } from "@/lib/i18n";
-import { getDictionary } from "@/lib/i18n";
 import { Service, getServiceTranslation } from "@/data/services";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,8 +16,8 @@ export default function ServiceDetailClient({
   service: Service;
   lang: Locale;
 }) {
-  const t = getDictionary(lang);
   const tr = getServiceTranslation(service, lang);
+  const faqItems = lang === "uz" ? service.faq.uz : service.faq.ru;
 
   return (
     <>
@@ -67,13 +66,18 @@ export default function ServiceDetailClient({
               {tr.fullDesc}
             </p>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 lg:p-8 mb-8 lg:mb-10 inline-block shadow-elevated">
-              <div className="text-xs lg:text-sm uppercase tracking-wider font-semibold text-white/50 mb-1.5 lg:mb-2">
-                {lang === "ru" ? "Начальная стоимость" : "Boshlang'ich narxi"}
-              </div>
-              <div className="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-gold">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 lg:p-8 mb-8 lg:mb-10 shadow-elevated">
+              <h2 className="font-display font-bold text-xl md:text-2xl text-white mb-3">
+                {lang === "ru"
+                  ? "Стоимость услуги в Ташкенте"
+                  : "Toshkentda xizmat narxi"}
+              </h2>
+              <p className="text-xs lg:text-sm uppercase tracking-wider font-semibold text-white/50 mb-1.5 lg:mb-2">
+                {lang === "ru" ? "Начальная цена" : "Boshlang'ich narx"}
+              </p>
+              <p className="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-gold">
                 {tr.price}
-              </div>
+              </p>
             </div>
 
             <div className="block">
@@ -100,6 +104,31 @@ export default function ServiceDetailClient({
           </AnimatedSection>
         </div>
 
+        {tr.advantages && tr.advantages.length > 0 && (
+          <div className="container-wide mt-12 md:mt-16">
+            <AnimatedSection delay={0.15}>
+              <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-8 md:mb-10">
+                {lang === "ru" ? "Преимущества услуги" : "Xizmat afzalliklari"}
+              </h2>
+              <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+                {tr.advantages.map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-6 md:p-8 rounded-2xl bg-card border border-white/5 hover:border-gold/30 transition-colors"
+                  >
+                    <h3 className="font-display font-bold text-lg md:text-xl text-white mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        )}
+
         {/* What's included */}
         <div className="container-wide mt-12 md:mt-16">
           <AnimatedSection delay={0.2}>
@@ -110,13 +139,13 @@ export default function ServiceDetailClient({
 
               <div className="relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
                 <div className="lg:w-5/12 bg-transparent">
-                  <h3 className="font-display font-bold text-3xl md:text-4xl text-white mb-5 leading-tight">
+                  <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-5 leading-tight">
                     {lang === "ru" ? "Что входит" : "Narxga nima"}
                     <br />
                     <span className="text-gold">
                       {lang === "ru" ? "в стоимость" : "kiradi"}
                     </span>
-                  </h3>
+                  </h2>
                   <p className="text-white/60 text-base md:text-lg leading-relaxed">
                     {lang === "ru"
                       ? `Мы ответственно подходим к выполнению услуги ${tr.title.toLowerCase()}. В финальную стоимость уже включены все необходимые этапы, премиальные чистящие средства и профессиональное оборудование. Никаких скрытых платежей.`
@@ -145,9 +174,9 @@ export default function ServiceDetailClient({
         </div>
 
         {/* FAQ */}
-        {service.faq[lang] && service.faq[lang].length > 0 && (
+        {faqItems.length > 0 && (
           <div className="container-wide mt-12 md:mt-16">
-            <ServiceFAQ faq={service.faq[lang]} serviceTitle={tr.title} />
+            <ServiceFAQ faq={faqItems} serviceTitle={tr.title} />
           </div>
         )}
 

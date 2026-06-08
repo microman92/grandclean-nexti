@@ -1,22 +1,19 @@
-import ruMessages from "@/messages/ru.json";
-import uzMessages from "@/messages/uz.json";
+import ru from "@/messages/ru.json";
+import uz from "@/messages/uz.json";
 
 export type Locale = "ru" | "uz";
+
 export const locales: Locale[] = ["ru", "uz"];
 export const defaultLocale: Locale = "ru";
 
-const messages = {
-  ru: ruMessages,
-  uz: uzMessages,
-} as const;
+export type Messages = typeof ru;
 
-export type Messages = typeof ruMessages;
+const messages: Record<"ru" | "uz", Messages> = {
+  ru,
+  uz,
+};
 
-export function getMessages(lang: Locale): Messages {
-  return messages[lang] ?? messages[defaultLocale];
-}
-
-// Type-safe t() function — supports dot-notation keys
-export function getDictionary(lang: Locale) {
-  return messages[lang] ?? messages[defaultLocale];
+export function getDictionary(locale: Locale): Messages {
+  if (locale === "uz") return messages.uz;
+  return messages.ru;
 }

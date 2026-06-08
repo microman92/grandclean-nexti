@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/i18n";
+import { BUSINESS } from "@/lib/site";
 
 interface NavigationProps {
   lang: Locale;
@@ -59,10 +61,11 @@ export default function Navigation({ lang, t }: NavigationProps) {
       <div className="container-wide flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link href={`/${lang}/`} className="flex items-center gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/logo.svg"
             alt="GrandClean Logo"
+            width={60}
+            height={60}
             className="w-[60px] h-[60px] object-contain"
           />
         </Link>
@@ -111,11 +114,11 @@ export default function Navigation({ lang, t }: NavigationProps) {
             ))}
           </div>
           <a
-            href="tel:+998935712151"
+            href={`tel:${BUSINESS.phoneE164}`}
             className="flex items-center gap-2 text-sm font-medium text-white"
           >
             <Phone className="w-4 h-4 text-gold" />
-            +998 93 571 21 51
+            {BUSINESS.phoneDisplay}
           </a>
           <Link
             href={`/${lang}/contact/`}
@@ -182,11 +185,11 @@ export default function Navigation({ lang, t }: NavigationProps) {
                   </div>
                 </div>
                 <a
-                  href="tel:+998935712151"
+                  href={`tel:${BUSINESS.phoneE164}`}
                   className="flex items-center w-fit gap-2 text-sm font-medium text-white"
                 >
                   <Phone className="w-4 h-4 text-gold" />
-                  +998 93 571 21 51
+                  {BUSINESS.phoneDisplay}
                 </a>
                 <Link
                   href={`/${lang}/contact/`}

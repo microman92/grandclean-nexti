@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -20,8 +21,10 @@ import SectionHeading from "@/app/components/SectionHeading";
 import Promotions from "@/app/components/Promotions";
 import BeforeAfter from "@/app/components/BeforeAfter";
 import FAQ from "@/app/components/FAQ";
+import Partners from "@/app/components/Partners";
 import { servicesData } from "@/data/services";
 import type { Locale } from "@/lib/i18n";
+import { getDictionary } from "@/lib/i18n";
 
 const advantages = [
   {
@@ -84,6 +87,7 @@ import PricingGrid from "@/app/components/PricingGrid";
 import Geography from "@/app/components/Geography";
 
 export default function HomePageClient({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
   const [activeService, setActiveService] = useState(0);
   const router = useRouter();
 
@@ -107,17 +111,16 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 text-gold text-xs font-display font-semibold tracking-wider uppercase mb-8"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              Премиум клининг в Ташкенте
+              {t.hero.badge}
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-[1.1] mb-6"
+              className="font-display font-extrabold text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-primary-foreground leading-[1.1] mb-6"
             >
-              Безупречная <span className="text-gradient-gold">чистота</span>{" "}
-              вашего пространства
+              {t.hero.h1}
             </motion.h1>
 
             <motion.p
@@ -126,9 +129,7 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
               transition={{ delay: 0.4 }}
               className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed max-w-lg mb-10"
             >
-              Профессиональная химчистка мебели, стирка ковров и уборка квартир
-              в Ташкенте. Используем оборудование Karcher и безопасные
-              эко-средства.
+              {t.hero.subtitle}
             </motion.p>
 
             <motion.div
@@ -183,12 +184,14 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative hidden lg:block"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/hero-interior.jpg"
+            <div className="relative rounded-2xl overflow-hidden shadow-elevated w-full h-[520px]">
+              <Image
+                src="/images/hero-interior.webp"
                 alt="Чистый интерьер"
-                className="w-full h-[520px] object-cover object-top"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                priority
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
@@ -200,9 +203,9 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
       <section className="section-padding bg-background">
         <div className="container-wide">
           <SectionHeading
-            label="Наши услуги"
-            title="Полный спектр клининговых услуг"
-            description="Мы предлагаем широкий выбор услуг по уборке для дома и бизнеса"
+            label={t.services.label}
+            title={t.services.title}
+            description={t.services.description}
           />
 
           {/* Desktop View (Tabs) - Visible only above 992px */}
@@ -228,11 +231,11 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
                   >
                     <div className="flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <span
+                        <h3
                           className={`font-display font-semibold text-base ${activeService === i ? "text-white" : "text-foreground"}`}
                         >
                           {tr.title}
-                        </span>
+                        </h3>
                         <ArrowRight
                           className={`w-4 h-4 transition-all duration-300 ${
                             activeService === i
@@ -249,59 +252,66 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
                         </div>
                       )}
                     </div>
-                    {activeService === i && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-muted-foreground text-sm mt-2 mb-3 leading-relaxed">
-                          {tr.shortDesc}
-                        </p>
-                        <span className="inline-flex items-center gap-1 text-gold text-xs font-semibold uppercase tracking-wider hover:text-white transition-colors">
-                          Узнать подробнее
-                        </span>
-                      </motion.div>
-                    )}
+                    <div
+                      className={
+                        activeService === i ? "block" : "hidden"
+                      }
+                      aria-hidden={activeService !== i}
+                    >
+                      <p className="text-muted-foreground text-sm mt-2 mb-3 leading-relaxed">
+                        {tr.shortDesc}
+                      </p>
+                      <span className="inline-flex items-center gap-1 text-gold text-xs font-semibold uppercase tracking-wider hover:text-white transition-colors">
+                        {t.services.detailBtn}
+                      </span>
+                    </div>
                   </button>
                 );
               })}
             </div>
 
-            {/* Dynamic image */}
-            <Link
-              href={`/${lang}/services/${servicesData[activeService].id}/`}
-              className="lg:col-span-3 relative block group/img"
-            >
-              <motion.div
-                key={activeService}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className="rounded-2xl overflow-hidden h-[500px] lg:h-full lg:min-h-[400px]"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={servicesData[activeService].img}
-                  alt={servicesData[activeService].translations[lang]?.title}
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent hidden" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="inline-block px-4 py-1.5 mb-3 rounded-lg bg-black/60 border border-gold/30 backdrop-blur-sm">
-                    <span className="text-gold font-bold">
-                      {servicesData[activeService].translations[lang]?.price}
-                    </span>
+            <div className="lg:col-span-3 relative min-h-[400px] h-[500px] lg:h-full">
+              {servicesData.map((s, i) => {
+                const panelTr = s.translations[lang] ?? s.translations.ru;
+                return (
+                  <div
+                    key={s.id}
+                    className={
+                      activeService === i
+                        ? "absolute inset-0 block"
+                        : "absolute inset-0 hidden"
+                    }
+                    aria-hidden={activeService !== i}
+                  >
+                    <Link
+                      href={`/${lang}/services/${s.id}/`}
+                      className="relative block group/img h-full rounded-2xl overflow-hidden"
+                    >
+                      <Image
+                        src={s.img}
+                        alt={panelTr.title}
+                        fill
+                        sizes="(min-width: 1024px) 60vw, 100vw"
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="inline-block px-4 py-1.5 mb-3 rounded-lg bg-black/60 border border-gold/30 backdrop-blur-sm">
+                          <span className="text-gold font-bold">
+                            {panelTr.price}
+                          </span>
+                        </div>
+                        <h3 className="font-display font-bold text-2xl text-white mb-2">
+                          {panelTr.title}
+                        </h3>
+                        <p className="text-white/80 text-sm">
+                          {panelTr.shortDesc}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-white mb-2">
-                    {servicesData[activeService].translations[lang]?.title}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {servicesData[activeService].translations[lang]?.shortDesc}
-                  </p>
-                </div>
-              </motion.div>
-            </Link>
+                );
+              })}
+            </div>
           </div>
 
           {/* Mobile/Tablet View (Cards) - Visible at 992px and below */}
@@ -317,9 +327,11 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
                     href={`/${lang}/services/${s.id}/`}
                     className="block relative h-[350px]"
                   >
-                    <img
+                    <Image
                       src={s.img}
                       alt={tr.title}
+                      fill
+                      sizes="100vw"
                       className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
@@ -355,7 +367,7 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
               href={`/${lang}/services/`}
               className="inline-flex items-center gap-2 font-display font-semibold text-sm text-foreground hover:text-gold transition-colors"
             >
-              Все услуги
+              {t.services.allBtn}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </AnimatedSection>
@@ -477,8 +489,9 @@ export default function HomePageClient({ lang }: { lang: Locale }) {
         </div>
       </section>
 
-      <PricingGrid />
+      <PricingGrid lang={lang} />
       <BeforeAfter />
+      <Partners lang={lang} />
       <FAQ />
       <Geography />
 

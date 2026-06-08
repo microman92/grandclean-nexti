@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import SectionHeading from "./SectionHeading";
 
 const promoBirthday =
@@ -13,22 +14,20 @@ const promotions = [
     title: "Скидка пенсионерам",
     desc: "Мы очень ценим и уважаем старшее поколение. Для наших дорогих пенсионеров у нас действует программа лояльности. Скидка на услуги в размере",
     discount: "20%",
-    img: "/images/promo_seniors.png",
-    descHtml: false,
+    img: "/images/promo_seniors.webp",
   },
   {
     title: "У вас день рождения?",
     desc: "Как важно принимать гостей в чистом и уютном доме. Для дорогих именинников у нас предусмотрены скидки в размере",
     discount: "30%",
     img: promoBirthday,
-    descHtml: false,
   },
   {
     title: "Dog Friendly",
-    desc: "",
+    desc: "Мы отдаём 10% с каждого нашего заказа приюту для собак Mehr, чтобы вместе с вами делать добро.",
     discount: "10%",
-    img: promoMehr,
     descHtml: true,
+    img: promoMehr,
   },
 ];
 
@@ -59,8 +58,7 @@ export default function Promotions() {
             >
               <div className="h-[260px] overflow-hidden relative md:max-w-full w-full mx-auto">
                 <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <motion.img
                   src={promo.img}
                   alt={promo.title}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out scale-[1.3] group-hover:scale-[1.38]"
@@ -72,9 +70,8 @@ export default function Promotions() {
                 </h3>
                 {promo.descHtml ? (
                   <p className="text-muted-foreground text-[15px] leading-relaxed">
-                    Мы отдаём{" "}
-                    <span className="text-gold font-semibold">10%</span> с
-                    каждого нашего заказа приюту для собак Mehr, чтобы вместе с
+                    Мы отдаём <span className="text-gold font-semibold">10%</span>{" "}
+                    с каждого нашего заказа приюту для собак Mehr, чтобы вместе с
                     вами делать добро.
                   </p>
                 ) : (

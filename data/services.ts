@@ -18,12 +18,18 @@ export interface Service {
   };
 }
 
+export interface ServiceAdvantage {
+  title: string;
+  description: string;
+}
+
 export interface ServiceTranslation {
   title: string;
   category: string;
   shortDesc: string;
   fullDesc: string;
   includes: string[];
+  advantages?: ServiceAdvantage[];
   price: string;
   metaTitle: string;
   metaDesc: string;
@@ -32,10 +38,10 @@ export interface ServiceTranslation {
 export const servicesData: Service[] = [
   {
     id: "professionalnaya-uborka",
-    img: "/images/service-apartment.png",
+    img: "/images/service-apartment.webp",
     translations: {
       ru: {
-        title: "Профессиональная уборка",
+        title: "Профессиональная уборка в Ташкенте",
         category: "Помещения",
         shortDesc:
           "Регулярная и разовая уборка жилых и коммерческих помещений.",
@@ -120,10 +126,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "stirka-kovrov",
-    img: "/images/service-carpet.png",
+    img: "/images/service-carpet.webp",
     translations: {
       ru: {
-        title: "Стирка ковров",
+        title: "Стирка ковров в Ташкенте",
         category: "Специальные",
         shortDesc: "Профессиональная стирка ковров с вывозом и доставкой.",
         fullDesc:
@@ -205,10 +211,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "himchistka-mebeli",
-    img: "/images/service-sofa.png",
+    img: "/images/service-sofa.webp",
     translations: {
       ru: {
-        title: "Химчистка мебели",
+        title: "Химчистка мебели в Ташкенте",
         category: "Специальные",
         shortDesc: "Глубокая химчистка диванов, кресел, матрасов и ковров.",
         fullDesc:
@@ -290,10 +296,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "moyka-okon",
-    img: "/images/moyka-okon.png",
+    img: "/images/moyka-okon.webp",
     translations: {
       ru: {
-        title: "Мойка окон",
+        title: "Мойка окон в Ташкенте",
         category: "Фасады и экстерьер",
         shortDesc: "Профессиональное мытьё окон на любой высоте без разводов.",
         fullDesc:
@@ -377,10 +383,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "mytyo-fasadov",
-    img: "/images/klining-fasadov.png",
+    img: "/images/moyka-fasadov.webp",
     translations: {
       ru: {
-        title: "Мытьё фасадов",
+        title: "Мытьё фасадов в Ташкенте",
         category: "Фасады и экстерьер",
         shortDesc: "Очистка фасадов от загрязнений, пыли и копоти.",
         fullDesc:
@@ -464,10 +470,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "chistka-bruschatki",
-    img: "/images/chistka-bruschatki.png",
+    img: "/images/chistka-bruschatki.webp",
     translations: {
       ru: {
-        title: "Чистка брусчатки",
+        title: "Чистка брусчатки в Ташкенте",
         category: "Фасады и экстерьер",
         shortDesc:
           "Удаление мха, грязи и пятен с тротуарной плитки и брусчатки.",
@@ -552,10 +558,10 @@ export const servicesData: Service[] = [
   },
   {
     id: "dezinfekciya",
-    img: "/images/dezinfekciya.png",
+    img: "/images/dezinfekciya.webp",
     translations: {
       ru: {
-        title: "Дезинфекция",
+        title: "Дезинфекция в Ташкенте",
         category: "Специальные",
         shortDesc:
           "Уничтожение бактерий, вирусов и аллергенов. Безопасно для людей.",
@@ -633,6 +639,284 @@ export const servicesData: Service[] = [
           question: "Dezinfeksiyadan keyin qanday hujjatlar berasiz?",
           answer:
             "Bajarilgan ishlar dalolatnomasi beriladi. Yuridik shaxslar uchun — to'liq hujjat paketi.",
+        },
+      ],
+    },
+  },
+  {
+    id: "himchistka-shtor-i-odeyal",
+    img: "/images/hero-interior.webp",
+    translations: {
+      ru: {
+        title: "Химчистка штор, одеял и курпачей в Ташкенте",
+        category: "Специальные",
+        shortDesc:
+          "Безопасное удаление пыли и клещей. Стирка курпачей и химчистка тяжёлых портьер с вывозом или на дому.",
+        fullDesc:
+          "GrandClean выполняет профессиональную химчистку штор, занавесок, одеял и курпачей в Ташкенте. Мы безопасно удаляем пыль, пылевых клещей и аллергены, возвращая текстилю свежесть и мягкость. Тяжёлые портьеры чистим на дому или с бесплатным вывозом в цех — подберём удобный формат для вашей квартиры или дома.",
+        includes: [
+          "Химчистка штор и занавесок",
+          "Стирка и чистка курпачей",
+          "Чистка одеял и подушек",
+          "Вывоз тяжёлых портьер или работа на дому",
+          "Удаление пыли и пылевых клещей",
+          "Деликатная сушка и дезодорация",
+        ],
+        advantages: [
+          {
+            title: "Стирка курпачей в Ташкенте без повреждений",
+            description:
+              "Бережно обрабатываем курпачи из хлопка, бязи и смесовых тканей: удаляем загрязнения, сохраняя форму и насыщенность цвета.",
+          },
+          {
+            title: "Безопасное удаление пыли и клещей",
+            description:
+              "Используем сертифицированные гипоаллергенные средства и паровую обработку для уничтожения пылевых клещей и аллергенов.",
+          },
+          {
+            title: "Химчистка тяжёлых портьер с вывозом",
+            description:
+              "Забираем объёмные портьеры в цех, выполняем глубокую чистку и возвращаем готовый текстиль — без риска для вашего интерьера.",
+          },
+          {
+            title: "Чистка на дому без демонтажа",
+            description:
+              "Для лёгких штор и занавесок приезжаем с портативным оборудованием и проводим химчистку прямо у вас.",
+          },
+        ],
+        price: "от 35.000 сум",
+        metaTitle:
+          "Химчистка штор, одеял и курпачей в Ташкенте — GrandClean",
+        metaDesc:
+          "Химчистка штор, занавесок, одеял и курпачей в Ташкенте. Безопасное удаление пыли и клещей, стирка курпачей, чистка тяжёлых портьер с вывозом. ☎ +998 93 571 21 51.",
+      },
+      uz: {
+        title: "Toshkentda parda, ko'rpa va kurpachalarni kimyoviy tozalash",
+        category: "Maxsus",
+        shortDesc:
+          "Chang va chang kanalarini xavfsiz yo'q qilish. Kurpachalarni yuvish va og'ir pardalarni uyda yoki olib ketish bilan tozalash.",
+        fullDesc:
+          "GrandClean Toshkentda parda, jalyuzi, ko'rpa va kurpachalarni professional kimyoviy tozalash xizmatini ko'rsatadi. Chang, chang kanalari va allergenlarni xavfsiz yo'q qilamiz. Og'ir pardalarni uyda yoki bepul olib ketish bilan sexda tozalaymiz.",
+        includes: [
+          "Parda va jalyuzilarni kimyoviy tozalash",
+          "Kurpachalarni yuvish va tozalash",
+          "Ko'rpa va yostiqchalarni tozalash",
+          "Og'ir pardalarni olib ketish yoki uyda ishlash",
+          "Chang va chang kanalarini yo'q qilish",
+          "Nozik quritish va deodoratsiya",
+        ],
+        advantages: [
+          {
+            title: "Toshkentda kurpachalarni zararsiz yuvish",
+            description:
+              "Paxta, mata va aralash matodan tayyorlangan kurpachalarni ehtiyotkorlik bilan tozalaymiz: ifloslanishni olib tashlab, shakl va rangni saqlaymiz.",
+          },
+          {
+            title: "Chang va chang kanalarini xavfsiz yo'q qilish",
+            description:
+              "Chang kanalari va allergenlarni yo'q qilish uchun sertifikatlangan gipoallergen vositalar va bug' bilan ishlaymiz.",
+          },
+          {
+            title: "Og'ir pardalarni olib ketish bilan tozalash",
+            description:
+              "Katta hajmli pardalarni sexga olib ketamiz, chuqur tozalash qilamiz va tayyor matoni qaytaramiz.",
+          },
+          {
+            title: "Uyda demontajsiz tozalash",
+            description:
+              "Yengil parda va jalyuzilar uchun portativ uskunalar bilan to'g'ridan-to'g'ri uyga kelamiz.",
+          },
+        ],
+        price: "35 000 so'mdan",
+        metaTitle:
+          "Toshkentda parda, ko'rpa va kurpachalarni kimyoviy tozalash — GrandClean",
+        metaDesc:
+          "Toshkentda parda, ko'rpa va kurpachalarni kimyoviy tozalash. Chang va chang kanalarini xavfsiz yo'q qilish, kurpachalarni yuvish. ☎ +998 93 571 21 51.",
+      },
+    },
+    faq: {
+      ru: [
+        {
+          question: "Как часто нужно чистить курпачи и одеяла в Ташкенте?",
+          answer:
+            "Рекомендуем профессиональную чистку курпачей и одеял 1–2 раза в год, особенно в сезон цветения и при аллергии у детей.",
+        },
+        {
+          question: "Можно ли заказать химчистку штор без снятия с карниза?",
+          answer:
+            "Да, для лёгких тканей проводим чистку на месте. Тяжёлые портьеры надёжнее обрабатывать с вывозом в цех.",
+        },
+        {
+          question: "Удаляете ли вы пылевых клещей из одеял и подушек?",
+          answer:
+            "Да, используем паровую обработку и антиаллергенные составы, которые уничтожают клещей и нейтрализуют аллергены.",
+        },
+        {
+          question: "Сколько сохнут курпачи после стирки?",
+          answer:
+            "При профессиональной сушке в цехе — 24–48 часов. На дому срок зависит от толщины ткани и вентиляции помещения.",
+        },
+      ],
+      uz: [
+        {
+          question:
+            "Toshkentda kurpacha va ko'rpalarni qancha vaqtda bir tozalash kerak?",
+          answer:
+            "Kurpacha va ko'rpalarni yiliga 1–2 marta professional tozalash tavsiya etiladi, ayniqsa gullash mavsumida va bolalarda allergiya bo'lsa.",
+        },
+        {
+          question: "Pardalarni karnizdan yechmasdan tozalash mumkinmi?",
+          answer:
+            "Ha, yengil matolar uchun joyida tozalash mumkin. Og'ir pardalar sexda ishlash xavfsizroq.",
+        },
+        {
+          question: "Ko'rpa va yostiqchalardan chang kanalarini olib tashlaysizmi?",
+          answer:
+            "Ha, bug' bilan ishlov va antiallergen tarkiblar chang kanalarini yo'q qiladi va allergenlarni neytrallashtiradi.",
+        },
+        {
+          question: "Yuvishdan keyin kurpachalar qancha qurishadi?",
+          answer:
+            "Sexda professional quritishda — 24–48 soat. Uyda mato qalinligi va shamollatishga bog'liq.",
+        },
+      ],
+    },
+  },
+  {
+    id: "himchistka-detskih-kolyasok",
+    img: "/images/baby-stroller-cleaning.webp",
+    translations: {
+      ru: {
+        title: "Химчистка детских колясок в Ташкенте",
+        category: "Специальные",
+        shortDesc:
+          "Химчистка детских автокресел, удаление пятен от еды и соков. Гипоаллергенные эко-средства, безопасные для детей 0+.",
+        fullDesc:
+          "Профессиональная химчистка детских колясок, люлек и автокресел в Ташкенте. Удаляем пятна от еды, соков, молока и следы активных игр. Используем только гипоаллергенные эко-средства, сертифицированные для детей 0+, без резкого запаха и токсичных остатков.",
+        includes: [
+          "Химчистка колясок и люлек",
+          "Чистка детских автокресел",
+          "Удаление пятен от еды и соков",
+          "Обработка ремней и мягких вставок",
+          "Дезинфекция и нейтрализация запахов",
+          "Безопасные эко-средства для детей 0+",
+        ],
+        advantages: [
+          {
+            title: "Химчистка детских автокресел в Ташкенте",
+            description:
+              "Глубоко очищаем обивку и ремни автокресел, не нарушая защитные свойства материалов и креплений.",
+          },
+          {
+            title: "Удаление пятен от еды и соков",
+            description:
+              "Выводим следы фруктовых соков, пюре, молока и других детских загрязнений без разводов и пятен.",
+          },
+          {
+            title: "Гипоаллергенные эко-средства для детей 0+",
+            description:
+              "Применяем только сертифицированную химию без агрессивных компонентов — безопасно для новорождённых и малышей.",
+          },
+          {
+            title: "Дезинфекция без вредных остатков",
+            description:
+              "Уничтожаем бактерии и неприятные запахи, оставляя коляску свежей и готовой к использованию в тот же день.",
+          },
+        ],
+        price: "от 80.000 сум",
+        metaTitle:
+          "Химчистка детских колясок и автокресел в Ташкенте — GrandClean",
+        metaDesc:
+          "Химчистка детских колясок, люлек и автокресел в Ташкенте. Удаление пятен от еды и соков, гипоаллергенные эко-средства для детей 0+. ☎ +998 93 571 21 51.",
+      },
+      uz: {
+        title: "Toshkentda bolalar aravachalarini kimyoviy tozalash",
+        category: "Maxsus",
+        shortDesc:
+          "Bolalar avtokreslolarini kimyoviy tozalash, ovqat va sharbat dog'larini olib tashlash. 0+ bolalar uchun xavfsiz gipoallergen eko-vositalar.",
+        fullDesc:
+          "Toshkentda bolalar aravachalari, beshiklar va avtokreslolarini professional kimyoviy tozalash. Ovqat, sharbat, sut dog'lari va faol o'yin izlarini olib tashlaymiz. Faqat 0+ bolalar uchun sertifikatlangan gipoallergen eko-vositalardan foydalanamiz.",
+        includes: [
+          "Aravacha va beshiklarni kimyoviy tozalash",
+          "Bolalar avtokreslolarini tozalash",
+          "Ovqat va sharbat dog'larini olib tashlash",
+          "Tasmalar va yumshoq qismlarni ishlov berish",
+          "Dezinfeksiya va hidni neytrallashtirish",
+          "0+ bolalar uchun xavfsiz eko-vositalar",
+        ],
+        advantages: [
+          {
+            title: "Toshkentda bolalar avtokreslolarini tozalash",
+            description:
+              "Avtokreslo matosi va tasmalarini chuqur tozalaymiz, himoya xususiyatlari va mahkamlashlarni buzmasdan.",
+          },
+          {
+            title: "Ovqat va sharbat dog'larini olib tashlash",
+            description:
+              "Meva sharbatlari, pyure, sut va boshqa bolalar ifloslanishlarini iz va dog'siz olib tashlaymiz.",
+          },
+          {
+            title: "0+ bolalar uchun gipoallergen eko-vositalar",
+            description:
+              "Faqat sertifikatlangan, agressiv komponentlarsiz kimyo — yangi tug'ilgan chaqaloqlar va bolajonlar uchun xavfsiz.",
+          },
+          {
+            title: "Zararli qoldiqlarsiz dezinfeksiya",
+            description:
+              "Bakteriyalar va yoqimsiz hidlarni yo'q qilamiz, aravachani shu kunning o'zida foydalanishga tayyor qoldiramiz.",
+          },
+        ],
+        price: "80 000 so'mdan",
+        metaTitle:
+          "Toshkentda bolalar aravachalari va avtokreslolarini tozalash — GrandClean",
+        metaDesc:
+          "Toshkentda bolalar aravachalari, beshiklar va avtokreslolarini kimyoviy tozalash. Ovqat dog'lari, 0+ uchun xavfsiz eko-vositalar. ☎ +998 93 571 21 51.",
+      },
+    },
+    faq: {
+      ru: [
+        {
+          question: "Безопасна ли химчистка коляски для новорождённого?",
+          answer:
+            "Да, мы используем только гипоаллергенные эко-средства, сертифицированные для детей 0+, без агрессивных отдушек и токсичных остатков.",
+        },
+        {
+          question: "Удаляете ли вы пятна от соков и детского питания?",
+          answer:
+            "Да, ферментные составы эффективно расщепляют пятна от фруктовых соков, пюре, молока и других продуктов.",
+        },
+        {
+          question: "Сколько сохнет коляска после химчистки?",
+          answer:
+            "В среднем 4–8 часов при комнатной температуре. Мы используем экстрактор, который вытягивает влагу из обивки.",
+        },
+        {
+          question: "Чистите ли вы люльки и прогулочные блоки отдельно?",
+          answer:
+            "Да, обрабатываем люльки, прогулочные коляски и детские автокресла — как комплексно, так и по отдельности.",
+        },
+      ],
+      uz: [
+        {
+          question:
+            "Yangi tug'ilgan chaqaloq uchun aravachani tozalash xavfsizmi?",
+          answer:
+            "Ha, faqat 0+ bolalar uchun sertifikatlangan gipoallergen eko-vositalardan foydalanamiz, agressiv hidlar va toksik qoldiqlarsiz.",
+        },
+        {
+          question: "Sharbat va bolalar ovqati dog'larini olib tashlaysizmi?",
+          answer:
+            "Ha, ferment tarkiblar meva sharbatlari, pyure, sut va boshqa mahsulot dog'larini samarali parchalaydi.",
+        },
+        {
+          question: "Kimyoviy tozalashdan keyin aravacha qancha qurishadi?",
+          answer:
+            "Xona haroratida o'rtacha 4–8 soat. Matodan namlikni chiqarib oladigan ekstraktor ishlatamiz.",
+        },
+        {
+          question: "Beshik va yurish bloklarini alohida tozalaysizmi?",
+          answer:
+            "Ha, beshiklar, yurish aravachalari va bolalar avtokreslolarini kompleks yoki alohida ishlaymiz.",
         },
       ],
     },

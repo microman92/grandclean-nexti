@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
-import { servicesData } from "@/data/services";
+import { buildPageMetadata } from "@/lib/seo";
+import { servicesData, getServiceTranslation } from "@/data/services";
 import { notFound } from "next/navigation";
 import ServiceDetailClient from "./ServiceDetailClient";
 
@@ -19,16 +21,39 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default function ServiceDetailPage({
+export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale; id: string };
+  params: Promise<{ lang: Locale; id: string }>;
+}): Promise<Metadata> {
+  const { lang, id } = await params;
+  const service = servicesData.find((s) => s.id === id);
+
+  if (!service) {
+    return {};
+  }
+
+  const tr = getServiceTranslation(service, lang);
+
+  return buildPageMetadata(
+    lang,
+    `/services/${id}/`,
+    tr.metaTitle,
+    tr.metaDesc,
+  );
+}
+
+export default async function ServiceDetailPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale; id: string }>;
 }) {
-  const service = servicesData.find((s) => s.id === params.id);
+  const resolvedParams = await params;
+  const service = servicesData.find((s) => s.id === resolvedParams.id);
 
   if (!service) {
     notFound();
   }
 
-  return <ServiceDetailClient service={service} lang={params.lang} />;
+  return <ServiceDetailClient service={service} lang={resolvedParams.lang} />;
 }

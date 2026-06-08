@@ -1,6 +1,12 @@
 {
-  "/[lang]/pricing/page": "app/[lang]/pricing/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
   "/[lang]/about/page": "app/[lang]/about/page.js",
+  "/[lang]/contact/page": "app/[lang]/contact/page.js",
+  "/[lang]/pricing/page": "app/[lang]/pricing/page.js",
+  "/[lang]/reviews/page": "app/[lang]/reviews/page.js",
   "/[lang]/services/page": "app/[lang]/services/page.js",
   "/[lang]/page": "app/[lang]/page.js",
   "/[lang]/services/[id]/page": "app/[lang]/services/[id]/page.js"

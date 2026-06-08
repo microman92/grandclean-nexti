@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/i18n";
+import { toast } from "sonner";
 
 interface ContactFormProps {
   lang: Locale;
@@ -18,12 +19,32 @@ export default function ContactForm({ lang, t }: ContactFormProps) {
     message: "",
   });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", phone: "", service: "", message: "" });
-    setTimeout(() => setSent(false), 5000);
+    setLoading(true);
+    const msg = [form.service, form.message].filter(Boolean).join(" | ");
+    try {
+      const res = await fetch("/send.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, tel: form.phone, msg }),
+      });
+      const data = await res.json();
+      if (data.status === "success") {
+        setSent(true);
+        toast.success(t.contact.formSuccess);
+        setForm({ name: "", phone: "", service: "", message: "" });
+        setTimeout(() => setSent(false), 5000);
+      } else {
+        toast.error(data.message || "Ошибка отправки");
+      }
+    } catch {
+      toast.error("Не удалось отправить заявку. Проверьте соединение.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -164,10 +185,15 @@ export default function ContactForm({ lang, t }: ContactFormProps) {
 
         <button
           type="submit"
-          className="w-full md:w-auto px-10 py-4 rounded-lg font-display font-bold text-sm bg-gold text-accent-foreground hover:bg-gold-light transition-colors duration-200 shadow-gold flex items-center justify-center gap-2"
+          disabled={loading}
+          className="w-full md:w-auto px-10 py-4 rounded-lg font-display font-bold text-sm bg-gold text-accent-foreground hover:bg-gold-light transition-colors duration-200 shadow-gold flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          <Send className="w-4 h-4" aria-hidden="true" />
-          {t.contact.formSubmit}
+          {loading ? (
+            <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
+          ) : (
+            <Send className="w-4 h-4" aria-hidden="true" />
+          )}
+          {loading ? "..." : t.contact.formSubmit}
         </button>
       </form>
     </div>

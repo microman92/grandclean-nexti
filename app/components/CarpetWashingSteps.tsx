@@ -35,13 +35,13 @@ export default function CarpetWashingSteps() {
                 <div className="w-14 h-14 rounded-full border-[1.5px] border-gold text-gold flex items-center justify-center font-bold text-xl mb-6 bg-[#1a1a1a] shadow-[0_0_15px_rgba(255,183,0,0.15)] leading-none">
                   {step.id}
                 </div>
-                <div className="font-bold text-white/95 text-base md:text-lg leading-snug">
+                <h3 className="font-bold text-white/95 text-base md:text-lg leading-snug">
                   {step.title}
-                </div>
+                </h3>
                 {step.subtitle && (
-                  <div className="text-white/40 text-xs md:text-sm mt-2 leading-snug">
+                  <p className="text-white/40 text-xs md:text-sm mt-2 leading-snug">
                     {step.subtitle}
-                  </div>
+                  </p>
                 )}
               </div>
             </div>

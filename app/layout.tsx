@@ -1,6 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const preloadImages = [
+  "/images/logo.svg",
+  "/images/hero-interior.webp",
+  "/images/service-apartment.webp",
+  "/images/service-carpet.webp",
+  "/images/service-sofa.webp",
+  "/images/baby-stroller-cleaning.webp",
+  "/images/moyka-okon.webp",
+  "/images/moyka-fasadov.webp",
+  "/images/chistka-bruschatki .webp",
+  "/images/dezinfekciya.webp",
+  "/images/team.webp",
+  "/images/before.webp",
+  "/images/after.webp",
+  "/images/promo_seniors.webp",
+];
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://grandclean.uz"),
   title: {
@@ -23,6 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <head>
+        {preloadImages.map((href) => (
+          <link key={href} rel="preload" as="image" href={href} />
+        ))}
+      </head>
       <body>{children}</body>
     </html>
   );

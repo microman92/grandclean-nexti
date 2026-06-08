@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Mail,
@@ -12,6 +13,7 @@ import {
 import type { Locale } from "@/lib/i18n";
 import type { Messages } from "@/lib/i18n";
 import { servicesData } from "@/data/services";
+import { BUSINESS } from "@/lib/site";
 
 interface FooterProps {
   lang: Locale;
@@ -46,10 +48,11 @@ export default function Footer({ lang, t }: FooterProps) {
               href={`/${lang}/`}
               className="flex items-center gap-3 mb-6 w-fit group"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/logo.svg"
                 alt="GrandClean Logo"
+                width={60}
+                height={60}
                 className="w-[60px] h-[60px] object-contain group-hover:scale-105 transition-transform"
               />
               <span className="font-display font-bold text-xl tracking-wide text-white">
@@ -115,19 +118,19 @@ export default function Footer({ lang, t }: FooterProps) {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <a
-                  href="tel:+998935712151"
+                  href={`tel:${BUSINESS.phoneE164}`}
                   className="text-sm hover:text-gold transition-colors"
                 >
-                  +998 93 571 21 51
+                  {BUSINESS.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
                 <a
-                  href="mailto:info@grandclean.uz"
+                  href={`mailto:${BUSINESS.email}`}
                   className="text-sm hover:text-gold transition-colors"
                 >
-                  info@grandclean.uz
+                  {BUSINESS.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -139,8 +142,8 @@ export default function Footer({ lang, t }: FooterProps) {
                   className="text-sm text-primary-foreground/60 hover:text-gold transition-colors"
                 >
                   {lang === "ru"
-                    ? "Ташкент, ул. Жураева 48"
-                    : "Toshkent, Juraeva ko'chasi 48"}
+                    ? `Ташкент, ${BUSINESS.address}`
+                    : `Toshkent, ${BUSINESS.address}`}
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -162,7 +165,7 @@ export default function Footer({ lang, t }: FooterProps) {
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://facebook.com/grandcleanuz"
+                  href="https://www.facebook.com/profile.php?id=100092282247198"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold hover:text-accent-foreground transition-colors duration-300"
